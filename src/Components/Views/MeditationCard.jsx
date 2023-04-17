@@ -1,11 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../../App.css";
 import React from "react";
 import { AiTwotoneCustomerService } from "react-icons/ai";
 import { MdPlaylistAdd } from "react-icons/md";
 
 export default function MeditationCard({ card, handelAddPlayList, index }) {
   return (
-    <div className="col-lg-4 col-md-6 d-flex align-items-stretch">
+    <div className="col-lg-4 col-md-2 d-flex align-items-stretch">
       <div className="card">
         <img
           src="https://images.unsplash.com/photo-1678280440804-352d3479b51e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"

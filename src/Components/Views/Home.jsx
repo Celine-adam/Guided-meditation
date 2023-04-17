@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <section id="hero">
         <div className="hero-container ">
-          <h1>Tody's Message 🦋</h1>
+          <h1>Today's Message 🦋</h1>
           <div>
             {randomMessage ? (
               <div>

@@ -64,7 +64,7 @@ export default function Courses() {
         </form>
       </div>
 
-      <section id="why-us" class="why-us section-bg">
+      <section id="why-us" className="why-us section-bg">
         <div class="container">
           <div class="row">
             {cards.map((card, index) => (
