@@ -63,10 +63,9 @@ export default function Courses() {
           <button onClick={handleFilterByTime}>Filter By Time</button>
         </form>
       </div>
-
       <section id="why-us" className="why-us section-bg">
-        <div class="container">
-          <div class="row">
+        <div className="container">
+          <div className="row">
             {cards.map((card, index) => (
               <MeditationCard
                 key={card.id}
