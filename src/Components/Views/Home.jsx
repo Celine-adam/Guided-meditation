@@ -4,6 +4,7 @@ import Messages from "../../Messages.json";
 
 export default function Home() {
   const [randomMessage, setRandomMessage] = useState(null);
+
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * Messages.length);
     setRandomMessage(Messages[randomIndex]);

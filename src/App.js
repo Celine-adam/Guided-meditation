@@ -20,7 +20,6 @@ function App() {
           <Route exact path="/guided" element={<OnlineGuidedSessions />} />
           <Route path="/login" element={<Login />} />
           <Route path="/playList" element={<PlayList />} />
-
           <Route
             path="*"
             element={<p>I don't know this page. There was a 404 error</p>}
