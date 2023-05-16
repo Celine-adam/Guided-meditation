@@ -11,3 +11,4 @@ const listAffirmation = async (req, res) => {
       .json({ message: error.toString() });
   }
 };
+export default { listAffirmation };
