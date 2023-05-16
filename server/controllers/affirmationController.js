@@ -3,7 +3,7 @@ import Affirmation from "../models/Affirmation.js";
 
 export const listAffirmation = async (req, res) => {
   try {
-    const listAffirmations = await Affirmation.find().maxTimeMS(15000);
+    const listAffirmations = await Affirmation.find();
     return res.status(StatusCodes.OK).json(listAffirmations);
   } catch (error) {
     return res
