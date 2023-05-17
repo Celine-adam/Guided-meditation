@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
 import affirmationRouter from "./routes/affirmationRouter.js";
+import mediatationRouter from "./routes/meditationRouter.js";
+
 dotenv.config();
 
 const app = express();
@@ -26,7 +28,8 @@ mongoose
   });
 
 app.use(cors());
-app.use("/api/affirmation", affirmationRouter);
+app.use("/api/affirmations", affirmationRouter);
+app.use("/api/meditations", mediatationRouter);
 
 app.all("*", (req, res) => {
   return res.status(StatusCodes.NOT_FOUND).json({ message: "Invalid path" });
