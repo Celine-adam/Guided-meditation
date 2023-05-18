@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Header from "./Components/Header/Header";
 import Home from "./Components/Views/Home";
-import OnlineGuidedSessions from "./Components/Views/OnlineGuidedSessions";
+import Meditations from "./Components/Views/Meditations";
 import Login from "./Components/Views/Login";
 import PlayList from "./Components/Views/PlayList";
 
@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route exact path="/guided" element={<OnlineGuidedSessions />} />
+          <Route exact path="/guided" element={<Meditations />} />
           <Route path="/login" element={<Login />} />
           <Route path="/playList" element={<PlayList />} />
           <Route

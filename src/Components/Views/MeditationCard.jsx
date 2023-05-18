@@ -6,33 +6,50 @@ import { MdPlaylistAdd } from "react-icons/md";
 
 export default function MeditationCard({ card, handelAddPlayList, index }) {
   return (
-    <div className="col-lg-4 col-md-2 d-flex align-items-stretch">
-      <div className="card">
-        <img
-          src="https://images.unsplash.com/photo-1678280440804-352d3479b51e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
-          className="card-img-top"
-          alt="..."
-        />
-        <div className="card-body">
-          <h5 className="card-title">{card.title}</h5>
-          <p className="card-text">{card.body}</p>
+    <div class="card">
+      <div class="card__view">
+        <div class="card__view__data">
+          <p class="card__view__preview">Preview</p>
+          <p class="card__play__icon">
+            <svg width="8px" height="8px" viewBox="-0.5 0 7 7" version="1.1">
+              <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g
+                  id="Dribbble-Light-Preview"
+                  transform="translate(-347.000000, -3766.000000)"
+                  fill="#000000"
+                >
+                  <g id="icons" transform="translate(56.000000, 160.000000)">
+                    <path
+                      fill="#EAECEE"
+                      d="M296.494737,3608.57322 L292.500752,3606.14219 C291.83208,3605.73542 291,3606.25002 291,3607.06891 L291,3611.93095 C291,3612.7509 291.83208,3613.26444 292.500752,3612.85767 L296.494737,3610.42771 C297.168421,3610.01774 297.168421,3608.98319 296.494737,3608.57322"
+                      id="play-[#1003]"
+                    ></path>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </p>
+          <p class="card__lenght">10:19</p>
         </div>
-        <div className="row">
-          <div className="card-icon col-lg-4 col-md-6">
-            <i className="bx bx-calendar-edit">
-              <a href={card.link} target="_blank" rel="noopener noreferrer">
-                <AiTwotoneCustomerService />
-              </a>
-            </i>
-          </div>
-
-          <div className="card-icon col-lg-4 col-md-6">
-            <button
-              className="btn btn-outline-danger btn-sm"
-              onClick={() => handelAddPlayList(index)}
-            >
-              <MdPlaylistAdd />
-            </button>
+      </div>
+      <div class="card__content">
+        <p class="channel__video__name">
+          The Backwards Brain Bicycle - Smarter Every Day 133" by Destin Sandlin
+        </p>
+        <div class="channel__data">
+          <div class="channel__img"></div>
+          <div class="channel__data__text">
+            <p class="channel__name">SmarterEveryDay</p>
+            <div class="channel__subdata">
+              <p class="channel__views">519.7K Views</p>
+              <p class="channel__date">3 months ago</p>
+            </div>
           </div>
         </div>
       </div>

@@ -1,19 +1,18 @@
 import { createContext, useState } from "react";
-import MOCK_DATA from "../MOCK_DATA.json";
 
 export const DateContext = createContext();
 
 export default function DateContextProvider({ children }) {
-  const [meditationCards, setMeditationCards] = useState(MOCK_DATA);
   const [playList, setPlayList] = useState([]);
+  const [url, setUrl] = useState("https://guided-meditation.onrender.com");
 
   return (
     <DateContext.Provider
       value={{
-        meditationCards,
-        setMeditationCards,
         playList,
         setPlayList,
+        url,
+        setUrl,
       }}
     >
       {children}

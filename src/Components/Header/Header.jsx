@@ -1,45 +1,36 @@
-import React, { useState } from "react";
-import { AiOutlineAlignRight, AiOutlineClose} from "react-icons/ai";
+import React from "react";
+
+import { ImCross, ImMenu } from "react-icons/im";
 import { Link } from "react-router-dom";
 
 export default function Header() {
-  const [showNavbar, setShowNavbar] = useState(false);
-
-  const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar);
-  };
   return (
-    <header className="navbar">
-      <div className="container">
-        <div className="logo">Logo</div>
-        <div className="menu-icon" onClick={handleShowNavbar}>
-          {showNavbar ? <AiOutlineClose /> : <AiOutlineAlignRight />}
-        </div>
-        <div className={`nav-elements  ${showNavbar && "active"}`}>
-          <ul>
-            <li>
-              <Link className="link" to={"/"}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link className="link" to={"/guided"}>
-                Guided Mediation
-              </Link>
-            </li>
-            <li>
-              <Link className="link" to={"/playList"}>
-                PlayList
-              </Link>
-            </li>
-            <li>
-              <Link className="link" to={"/login"}>
-                Login
-              </Link>
-            </li>
-          </ul>
-        </div>
+    <>
+      <input type="checkbox" id="check"></input>
+      <label for="check">
+        <i id="btn">
+          <ImMenu />
+        </i>
+        <i class="fas fa-times fa-2x" id="cancel">
+          <ImCross />
+        </i>
+      </label>
+      <div class="sidebar">
+        <header>Menu</header>
+        <Link className="a" to={"/"}>
+          <span>Home</span>
+        </Link>
+
+        <Link className="a" to={"/guided"}>
+          <span> Meditations </span>
+        </Link>
+        <Link className="a" to={"/playList"}>
+          <span>PlayList </span>
+        </Link>
+        <Link className="a" to={"/login"}>
+          <span>Login </span>
+        </Link>
       </div>
-    </header>
+    </>
   );
 }
