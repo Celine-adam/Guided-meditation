@@ -184,34 +184,18 @@ label #cancel {
   font-size: 10px;
   margin: 10px;
   height: 20px;
-  color: #fff;
+  color: var(--secondary-gray);
   cursor: pointer;
   text-align: center;
-  border: none;
-  background-size: 300% 100%;
+  border: 1px solid var(--primary-color);
+  background: transparent;
   border-radius: 50px;
-  transition: all 0.4s ease-in-out;
-}
-
-.bn632-hover:hover {
-  background-position: 100% 0;
-  transition: all 0.4s ease-in-out;
 }
 
 .bn632-hover:focus {
   outline: none;
 }
 
-.bn632-hover.bn20 {
-  background-image: linear-gradient(
-    to right,
-    #667eea,
-    #9371b5,
-    #6b8dd6,
-    #9182ba
-  );
-  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
-}
 .container {
   width: 50%;
   margin: 0 auto;
@@ -226,7 +210,7 @@ label #cancel {
     width: 160px;
     font-size: 16px;
     font-weight: 600;
-    color: #fff;
+
     cursor: pointer;
     margin: 20px;
     height: 55px;
@@ -236,9 +220,9 @@ label #cancel {
 /* In this section you start by assigning a shape to the letter and an assigned size. */
 .card {
   --rounded: 20px;
-  --size: 270px;
+  --size: 350px;
   width: var(--size);
-  height: calc(var(--size) - 10px);
+  height: calc(var(--size) - 5px);
   border-radius: var(--rounded);
   background: #fff;
   position: relative;
@@ -256,18 +240,18 @@ label #cancel {
   width: var(--size);
   height: var(--size);
   filter: blur(var(--blur));
-  background-color: #faff99;
+  background-color: var(--body-bg);
   background-image: radial-gradient(
       at 33% 82%,
       hsla(254, 71%, 69%, 1) 0px,
       transparent 50%
     ),
-    radial-gradient(at 28% 4%, hsla(289, 96%, 63%, 1) 0px, transparent 50%),
-    radial-gradient(at 69% 49%, hsla(309, 91%, 71%, 1) 0px, transparent 50%),
-    radial-gradient(at 94% 14%, hsla(232, 66%, 62%, 1) 0px, transparent 50%),
-    radial-gradient(at 19% 93%, hsla(51, 98%, 74%, 1) 0px, transparent 50%),
-    radial-gradient(at 15% 80%, hsla(194, 87%, 63%, 1) 0px, transparent 50%),
-    radial-gradient(at 56% 52%, hsla(109, 71%, 61%, 1) 0px, transparent 50%);
+    radial-gradient(at 28% 4%, rgb(233, 227, 234) 0px, transparent 50%),
+    radial-gradient(at 69% 49%, rgb(240, 232, 239) 0px, transparent 50%),
+    radial-gradient(at 94% 14%, rgb(226, 227, 236) 0px, transparent 50%),
+    radial-gradient(at 19% 93%, rgb(249, 249, 246) 0px, transparent 50%),
+    radial-gradient(at 15% 80%, rgb(234, 242, 245) 0px, transparent 50%),
+    radial-gradient(at 56% 52%, rgb(211, 215, 210) 0px, transparent 50%);
 }
 
 /* Cover the chart with a light white tone, this helps the gradient colors to be less aggressive. */
@@ -355,18 +339,8 @@ Modify the background-image with the address of the cover to use. */
   transition: transform var(--duration);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #99cfff;
-  background-image: radial-gradient(
-      at 6% 14%,
-      hsla(234, 90%, 72%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 9% 73%, hsla(298, 79%, 64%, 1) 0px, transparent 50%),
-    radial-gradient(at 50% 38%, hsla(196, 72%, 75%, 1) 0px, transparent 50%),
-    radial-gradient(at 61% 82%, hsla(288, 92%, 79%, 1) 0px, transparent 50%),
-    radial-gradient(at 91% 67%, hsla(170, 86%, 66%, 1) 0px, transparent 50%),
-    radial-gradient(at 83% 29%, hsla(289, 73%, 63%, 1) 0px, transparent 50%),
-    radial-gradient(at 93% 34%, hsla(191, 88%, 75%, 1) 0px, transparent 50%);
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
 }
 
 .channel__img:hover {
@@ -436,66 +410,6 @@ Modify the background-image with the address of the cover to use. */
   transform: translateY(0px);
 }
 
-/* List of other colors you can use */
-.card:nth-child(2n)::before {
-  background-color: #ffd399;
-  background-image: radial-gradient(
-      at 15% 65%,
-      hsla(249, 84%, 60%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 38% 24%, hsla(197, 80%, 66%, 1) 0px, transparent 50%),
-    radial-gradient(at 65% 93%, hsla(228, 83%, 60%, 1) 0px, transparent 50%),
-    radial-gradient(at 16% 58%, hsla(314, 83%, 72%, 1) 0px, transparent 50%),
-    radial-gradient(at 77% 57%, hsla(298, 90%, 78%, 1) 0px, transparent 50%),
-    radial-gradient(at 76% 95%, hsla(178, 64%, 76%, 1) 0px, transparent 50%),
-    radial-gradient(at 15% 61%, hsla(248, 75%, 64%, 1) 0px, transparent 50%);
-}
-
-.card:nth-child(3n)::before {
-  background-color: #99b3ff;
-  background-image: radial-gradient(
-      at 93% 72%,
-      hsla(293, 71%, 70%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 28% 37%, hsla(252, 81%, 71%, 1) 0px, transparent 50%),
-    radial-gradient(at 25% 59%, hsla(158, 67%, 62%, 1) 0px, transparent 50%),
-    radial-gradient(at 48% 16%, hsla(197, 69%, 63%, 1) 0px, transparent 50%),
-    radial-gradient(at 70% 56%, hsla(171, 69%, 70%, 1) 0px, transparent 50%),
-    radial-gradient(at 7% 33%, hsla(65, 65%, 79%, 1) 0px, transparent 50%),
-    radial-gradient(at 89% 22%, hsla(286, 64%, 72%, 1) 0px, transparent 50%);
-}
-
-.card:nth-child(4n)::before {
-  background-color: #e2ff99;
-  background-image: radial-gradient(
-      at 22% 80%,
-      hsla(265, 77%, 67%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 91% 77%, hsla(292, 60%, 78%, 1) 0px, transparent 50%),
-    radial-gradient(at 66% 7%, hsla(46, 95%, 76%, 1) 0px, transparent 50%),
-    radial-gradient(at 16% 32%, hsla(275, 90%, 75%, 1) 0px, transparent 50%),
-    radial-gradient(at 26% 23%, hsla(283, 60%, 69%, 1) 0px, transparent 50%),
-    radial-gradient(at 2% 64%, hsla(208, 62%, 62%, 1) 0px, transparent 50%),
-    radial-gradient(at 62% 77%, hsla(112, 88%, 75%, 1) 0px, transparent 50%);
-}
-
-.card:nth-child(5n)::before {
-  background-color: #99d1ff;
-  background-image: radial-gradient(
-      at 21% 94%,
-      hsla(270, 95%, 76%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 56% 5%, hsla(252, 65%, 79%, 1) 0px, transparent 50%),
-    radial-gradient(at 67% 94%, hsla(194, 81%, 67%, 1) 0px, transparent 50%),
-    radial-gradient(at 15% 72%, hsla(304, 97%, 77%, 1) 0px, transparent 50%),
-    radial-gradient(at 63% 56%, hsla(38, 98%, 63%, 1) 0px, transparent 50%),
-    radial-gradient(at 41% 67%, hsla(321, 61%, 77%, 1) 0px, transparent 50%),
-    radial-gradient(at 68% 68%, hsla(263, 67%, 69%, 1) 0px, transparent 50%);
-}
 @media (min-width: 768px) {
   .card {
     --rounded: 40px;

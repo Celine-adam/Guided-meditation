@@ -1,8 +1,8 @@
 import { Schema, model } from "mongoose";
 const meditationSchema = new Schema({
-  id: { type: String },
   title: { type: String },
-  body: { type: String },
+  description: { type: String },
+  link: { typ: Buffer },
   time: { type: String },
 });
 const Meditation = model("mediation", meditationSchema);
