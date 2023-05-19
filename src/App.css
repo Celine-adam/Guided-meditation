@@ -268,21 +268,35 @@ label #cancel {
   outline: none;
 }
 
-.container {
+.meditation-container {
   width: 50%;
   margin: 0 auto;
-  max-width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.btn-loadmore {
+  color: var(--secondary-gray);
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 @media (min-width: 768px) {
+  .meditation-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
   .filter-container .bn632-hover {
     width: 160px;
     font-size: 16px;
     font-weight: 600;
-
     cursor: pointer;
     margin: 20px;
     height: 55px;

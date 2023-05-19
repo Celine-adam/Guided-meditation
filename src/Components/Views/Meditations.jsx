@@ -19,6 +19,7 @@ export default function Meditations() {
         ...prevMeditations,
         ...res.data.meditations,
       ]);
+
       setSelectedTime("");
       console.log("it is working");
     } catch (error) {
@@ -60,10 +61,7 @@ export default function Meditations() {
     <section className="meditation-section">
       <h2 className="heading-meditation">Guided Meditation</h2>
       <div className="filter-container">
-        <button
-          className="bn632-hover bn20"
-          onClick={() => handleTimeFilter(" ")}
-        >
+        <button className="bn632-hover bn20" onClick={fetchMeditations}>
           All
         </button>
         <button
@@ -86,7 +84,7 @@ export default function Meditations() {
         </button>
       </div>
 
-      <div className="container">
+      <div className="meditation-container">
         {meditations.map((meditation, index) => (
           <MeditationCard
             key={index}
@@ -96,7 +94,9 @@ export default function Meditations() {
           />
         ))}
       </div>
-      <button onClick={handleLoadMore}>Load More..</button>
+      <button className="btn-loadmore" onClick={handleLoadMore}>
+        Load More..
+      </button>
     </section>
   );
 }

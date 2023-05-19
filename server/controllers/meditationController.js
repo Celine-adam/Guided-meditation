@@ -3,7 +3,7 @@ import Meditation from "../models/Meditation.js";
 export const listMeditations = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1; // Get the page number from query parameters or default to 1
-    const limit = 5; // Number of documents to fetch per page
+    const limit = 6; // Number of documents to fetch per page
     const skip = (page - 1) * limit; // Calculate the number of documents to skip based on the page number
 
     const totalMeditations = await Meditation.countDocuments(); // Get the total count of meditations
