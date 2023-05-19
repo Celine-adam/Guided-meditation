@@ -3,18 +3,18 @@ import React from "react";
 export default function MeditationCard({ card, handelAddPlayList, index }) {
   return (
     <div>
-      <div class="card">
-        <div class="card__view">
-          <div class="card__view__data">
-            <p class="card__view__preview">Preview</p>
-            <p class="card__play__icon">
+      <div className="card">
+        <div className="card__view">
+          <div className="card__view__data">
+            <p className="card__view__preview">Preview</p>
+            <p className="card__play__icon">
               <svg width="8px" height="8px" viewBox="-0.5 0 7 7" version="1.1">
                 <g
                   id="Page-1"
                   stroke="none"
-                  stroke-width="1"
+                  strokeWidth="1"
                   fill="none"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                 >
                   <g
                     id="Dribbble-Light-Preview"
@@ -32,21 +32,18 @@ export default function MeditationCard({ card, handelAddPlayList, index }) {
                 </g>
               </svg>
             </p>
-            <p class="card__lenght">10:19</p>
+            <p className="card__lenght">{card.time}</p>
           </div>
         </div>
-        <div class="card__content">
-          <p class="channel__video__name">
-            The Backwards Brain Bicycle - Smarter Every Day 133" by Destin
-            Sandlin
-          </p>
-          <div class="channel__data">
-            <div class="channel__img"></div>
-            <div class="channel__data__text">
-              <p class="channel__name">SmarterEveryDay</p>
-              <div class="channel__subdata">
-                <p class="channel__views">519.7K Views</p>
-                <p class="channel__date">3 months ago</p>
+        <div className="card__content">
+          <p className="channel__video__name">{card.description}</p>
+          <div className="channel__data">
+            <div className="channel__img"></div>
+            <div className="channel__data__text">
+              <p className="channel__name">{card.title}</p>
+              <div className="channel__subdata">
+                <p className="channel__views">519.7K Views</p>
+                <p className="channel__date">3 months ago</p>
               </div>
             </div>
           </div>

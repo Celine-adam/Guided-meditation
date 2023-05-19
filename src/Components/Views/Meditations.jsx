@@ -5,83 +5,98 @@ import MeditationCard from "./MeditationCard.jsx";
 
 export default function Meditations() {
   const { url, playList, setPlayList } = useContext(DateContext);
-  const [meditationCards, setMeditationCards] = useState([]);
-  const [cards, setCards] = useState([]);
-  const [searchByNameInput, setSearchByNameInput] = useState("");
-  const [filterByTimeInput, setFilterByTimeInput] = useState("");
+  const [meditations, setMeditations] = useState([]);
+  const [page, setPage] = useState(1);
+  const [selectedTime, setSelectedTime] = useState("");
+
+  const fetchMeditations = async () => {
+    try {
+      const res = await axios.get(`${url}/api/meditations/list`, {
+        params: { page },
+      });
+
+      setMeditations((prevMeditations) => [
+        ...prevMeditations,
+        ...res.data.meditations,
+      ]);
+      setSelectedTime("");
+      console.log("it is working");
+    } catch (error) {
+      console.log("Resource not found");
+    }
+  };
+
+  const fetchMeditationsByTime = async (time) => {
+    try {
+      const res = await axios.get(`${url}/api/meditations/${time}`);
+
+      setMeditations(res.data);
+      console.log("it is working");
+    } catch (error) {
+      console.log("Resource not found");
+    }
+  };
 
   useEffect(() => {
-    async function fetchMeditation() {
-      try {
-        const res = await axios.get(`${url}/api/meditations/list`);
-        setMeditationCards(res.data);
-        setCards(res.data);
-      } catch (error) {
-        console.log("Resource not found");
-      }
-    }
-
-    fetchMeditation();
-  }, []);
-
-  const handleChangeNameInput = (e) => {
-    setSearchByNameInput(e.target.value);
-  };
-
-  const handleSearchByName = (e) => {
-    e.preventDefault();
-
-    if (searchByNameInput === "") {
-      setCards([...meditationCards]);
+    if (selectedTime === "") {
+      fetchMeditations();
     } else {
-      const cardByName = meditationCards.filter(
-        (card) => card.title === searchByNameInput
-      );
-      setCards(cardByName);
+      fetchMeditationsByTime(selectedTime);
     }
+  }, [page, selectedTime]);
+
+  const handleTimeFilter = (time) => {
+    setSelectedTime(time);
   };
-
-  const handleChangeTimeInput = (e) => {
-    setFilterByTimeInput(e.target.value);
-  };
-
-  const handleFilterByTime = (e) => {
-    e.preventDefault();
-
-    if (filterByTimeInput === "") {
-      setCards([...meditationCards]);
-    } else {
-      const cardByTime = meditationCards.filter(
-        (card) => card.time === filterByTimeInput
-      );
-      setCards(cardByTime);
-    }
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   const handelAddPlayList = (index) => {
-    setPlayList([...playList, meditationCards[index]]);
+    setPlayList([...playList, meditations[index]]);
   };
 
   return (
     <section className="meditation-section">
-      <h2 className="heading-meditation">Guided Mediation</h2>
+      <h2 className="heading-meditation">Guided Meditation</h2>
       <div className="filter-container">
-        <button className="bn632-hover bn20">All</button>
-        <button className="bn632-hover bn20">5mins</button>
-        <button className="bn632-hover bn20">10mins</button>
-        <button className="bn632-hover bn20">20mins</button>
+        <button
+          className="bn632-hover bn20"
+          onClick={() => handleTimeFilter(" ")}
+        >
+          All
+        </button>
+        <button
+          className="bn632-hover bn20"
+          onClick={() => handleTimeFilter("5 minutes")}
+        >
+          5mins
+        </button>
+        <button
+          className="bn632-hover bn20"
+          onClick={() => handleTimeFilter("10 minutes")}
+        >
+          10mins
+        </button>
+        <button
+          className="bn632-hover bn20"
+          onClick={() => handleTimeFilter("20 minutes")}
+        >
+          20mins
+        </button>
       </div>
 
       <div className="container">
-        {cards.map((card, index) => (
+        {meditations.map((meditation, index) => (
           <MeditationCard
-            key={card.id}
-            card={card}
+            key={index}
+            card={meditation}
             handelAddPlayList={handelAddPlayList}
             index={index}
           />
         ))}
       </div>
+      <button onClick={handleLoadMore}>Load More..</button>
     </section>
   );
 }
