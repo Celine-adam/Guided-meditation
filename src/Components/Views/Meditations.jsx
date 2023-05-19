@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { DateContext } from "../../Context/DateContext";
-import MeditationCard from "./MeditationCard";
+import MeditationCard from "./MeditationCard.jsx";
 
 export default function Meditations() {
   const { url, playList, setPlayList } = useContext(DateContext);
@@ -22,7 +22,7 @@ export default function Meditations() {
     }
 
     fetchMeditation();
-  }, [url]);
+  }, []);
 
   const handleChangeNameInput = (e) => {
     setSearchByNameInput(e.target.value);

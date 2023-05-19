@@ -10,3 +10,15 @@ export const listMeditations = async (req, res) => {
       .json({ message: error.toString() });
   }
 };
+export const listMeditationsbyTime = async (req, res) => {
+  try {
+    const listMeditationsbyTime = await Meditation.find({
+      time: req.params.time,
+    });
+    return res.status(StatusCodes.OK).json(listMeditationsbyTime);
+  } catch (error) {
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: error.toString() });
+  }
+};
