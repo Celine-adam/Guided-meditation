@@ -2,8 +2,19 @@ import { StatusCodes } from "http-status-codes";
 import Meditation from "../models/Meditation.js";
 export const listMeditations = async (req, res) => {
   try {
-    const listMeditations = await Meditation.find();
-    return res.status(StatusCodes.OK).json(listMeditations);
+    const page = parseInt(req.query.page) || 1; // Get the page number from query parameters or default to 1
+    const limit = 10; // Number of documents to fetch per page
+    const skip = (page - 1) * limit; // Calculate the number of documents to skip based on the page number
+
+    const totalMeditations = await Meditation.countDocuments(); // Get the total count of meditations
+    const meditations = await Meditation.find().skip(skip).limit(limit); // Fetch the meditations based on skip and limit
+
+    return res.status(StatusCodes.OK).json({
+      page,
+      limit,
+      totalMeditations,
+      meditations,
+    });
   } catch (error) {
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)

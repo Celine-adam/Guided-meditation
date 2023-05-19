@@ -10,6 +10,7 @@ import { StatusCodes } from "http-status-codes";
 import affirmationRouter from "./routes/affirmationRouter.js";
 import mediatationRouter from "./routes/meditationRouter.js";
 import userRoutes from "./routes/userRoutes.js";
+import messageRoutes from "./routes/messageRoutes.js";
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ app.use(cors());
 app.use("/api/affirmations", affirmationRouter);
 app.use("/api/meditations", mediatationRouter);
 app.use("/api/user", userRoutes);
+app.use("/api/message", messageRoutes);
 
 // Create GridFS storage instance
 const storage = new GridFsStorage({
