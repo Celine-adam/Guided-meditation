@@ -1,56 +1,63 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DateContext } from "../../Context/DateContext.js";
-// import axios from "axios";
+import { FaRegHeart } from "react-icons/fa";
+import axios from "axios";
 
 export default function Home() {
-  // const [randomAffirmation, setRandomAffirmation] = useState(null);
-  // const [randomMessage, setRandomMessage] = useState(null);
-  // const [showAffirmation, setShowAffirmation] = useState(true);
-  // const { url } = useContext(DateContext);
+  const [randomAffirmation, setRandomAffirmation] = useState(null);
+  const [randomMessage, setRandomMessage] = useState(null);
+  const [showAffirmation, setShowAffirmation] = useState(true);
+  const [favorite, setFavorite] = useState([]);
+  const { url } = useContext(DateContext);
 
-  // // const url = "https://guided-meditation.onrender.com";
-  // const handleToggle = () => {
-  //   setShowAffirmation(!showAffirmation);
-  // };
-  // const handleGenerateRandom = () => {
-  //   // Generate random affirmation and message here
-  //   if (showAffirmation) {
-  //     // Generate random affirmation
-  //     async function fetchAffirmations() {
-  //       try {
-  //         const res = await axios.get(`${url}/api/affirmations/list`);
-  //         const randomIndex = Math.floor(Math.random() * res.data.length);
-  //         setRandomAffirmation(res.data[randomIndex]);
-  //       } catch (error) {
-  //         console.log("Resource not found");
-  //       }
-  //     }
+  // const url = "https://guided-meditation.onrender.com";
+  const handleToggle = () => {
+    setShowAffirmation(!showAffirmation);
+  };
+  useEffect(() => {
+    if (showAffirmation) {
+      fetchAffirmations();
+    } else {
+      fetchAMessages();
+    }
+  }, [showAffirmation]);
 
-  //     fetchAffirmations();
-  //   } else {
-  //     // Generate random message
-  //     async function fetchAMessages() {
-  //       try {
-  //         const res = await axios.get(`${url}/api/message/list`);
-  //         const randomIndex = Math.floor(Math.random() * res.data.length);
-  //         setRandomMessage(res.data[randomIndex]);
-  //       } catch (error) {
-  //         console.log("Resource not found");
-  //       }
-  //     }
-
-  //     fetchAMessages();
-  //   }
-  // };
+  const fetchAMessages = async () => {
+    try {
+      const res = await axios.get(`${url}/api/message/list`);
+      const randomIndex = Math.floor(Math.random() * res.data.length);
+      setRandomMessage(res.data[randomIndex]);
+    } catch (error) {
+      console.log("Resource not found");
+    }
+  };
+  const fetchAffirmations = async () => {
+    try {
+      const res = await axios.get(`${url}/api/affirmations/list`);
+      const randomIndex = Math.floor(Math.random() * res.data.length);
+      setRandomAffirmation(res.data[randomIndex]);
+    } catch (error) {
+      console.log("Resource not found");
+    }
+  };
+  const handleFavorite = () => {
+    const favoriteContent = showAffirmation ? randomAffirmation : randomMessage;
+    setFavorite([...favorite, favoriteContent]);
+    console.log(favorite);
+  };
 
   return (
     <>
-      {/* <section id="hero">
+      <section id="hero">
         <div className="hero-container">
           <div class="switch-button">
-            <input class="switch-button-checkbox" type="checkbox"></input>
-            <label class="switch-button-label" for="">
-              <span class="switch-button-label-span">Photo</span>
+            <input
+              class="switch-button-checkbox"
+              type="checkbox"
+              onChange={handleToggle}
+            ></input>
+            <label class="switch-button-label">
+              <span class="switch-button-label-span">Affirmation</span>
             </label>
           </div>
           {showAffirmation ? (
@@ -64,21 +71,11 @@ export default function Home() {
           ) : (
             <p>Loading Message...</p>
           )}
+          <button className="btn-favorite" onClick={handleFavorite}>
+            <FaRegHeart className="favorite-icon" />
+          </button>
         </div>
-      </section> */}
+      </section>
     </>
   );
 }
-// useEffect(() => {
-//   async function fetchAffirmations() {
-//     try {
-//       const res = await axios.get(`${url}/api/affirmations/list`);
-//       const randomIndex = Math.floor(Math.random() * res.data.length);
-//       setRandomAffirmation(res.data[randomIndex]);
-//     } catch (error) {
-//       console.log("Resource not found");
-//     }
-//   }
-
-//   fetchAffirmations();
-// }, []);
