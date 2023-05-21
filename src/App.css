@@ -8,8 +8,8 @@
 }
 
 .App {
-  padding: 0;
-  margin: 0;
+  height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
   font-family: "Roboto Mono";
   font-size: 16px;
@@ -131,14 +131,16 @@ label #cancel {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
+  height: 90%;
   width: 100%;
-  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 #hero .hero-container {
-  width: 100%;
-  margin-top: 150px;
   display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -154,6 +156,7 @@ label #cancel {
   color: var(--secondary-black);
   position: relative;
   padding-right: 120px;
+  margin-top: 100px;
   margin-bottom: 100px;
 }
 
@@ -221,7 +224,7 @@ label #cancel {
 .btn-favorite {
   position: absolute;
   right: 5px;
-  bottom: 50px;
+  bottom: 0px;
   width: 50px;
   height: 50px;
   background: transparent;
@@ -239,15 +242,12 @@ label #cancel {
   }
   .btn-favorite {
     position: absolute;
-    right: 10px;
-    bottom: 30px;
+    right: 20px;
+    bottom: 5px;
     width: 80px;
     height: 80px;
     background: transparent;
     border: 1px solid var(--primary-color);
-  }
-  .btn-favorite .favorite-icon {
-    color: var(--primary-color);
   }
 }
 /* ---meditation section--------------------------------------------------- */
@@ -597,36 +597,14 @@ Modify the background-image with the address of the cover to use. */
 --------------------------------------------------------------*/
 .login-class {
   width: 100%;
-  height: 100vh;
+  height: 87%;
   position: relative;
 }
-.background {
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-}
-.background .shape {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-}
-.shape:first-child {
-  background: linear-gradient(#adaa18, #f6232d);
-  left: -80px;
-  top: -80px;
-}
-.shape:last-child {
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -30px;
-  bottom: -80px;
-}
+
 .login-form {
+  width: 90%;
+  padding: 30px 15px;
   height: 520px;
-  width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
@@ -668,7 +646,7 @@ Modify the background-image with the address of the cover to use. */
   font-weight: 300;
 }
 ::placeholder {
-  color: #ada4a4;
+  color: var(--secondary-gray);
 }
 .login-form button {
   margin-top: 50px;
@@ -681,79 +659,82 @@ Modify the background-image with the address of the cover to use. */
   border-radius: 5px;
   cursor: pointer;
 }
-@media (max-width: 768px) {
-  .background {
-    width: 100%;
-    height: auto;
-    position: static;
-    transform: none;
-    left: auto;
-    top: auto;
-  }
-
-  .background .shape {
-    height: 150px;
-    width: 150px;
-    left: -75px;
-    top: -75px;
-  }
-
-  .shape:last-child {
-    right: -15px;
-    bottom: -75px;
-  }
-
-  .login-form form {
-    width: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 30px 15px;
-  }
-
-  .login-form form h3 {
-    font-size: 24px;
-    line-height: 32px;
-  }
-
-  .login-form label {
-    margin-top: 20px;
-    font-size: 14px;
-  }
-
-  .login-form input {
-    height: 40px;
-    margin-top: 5px;
-    font-size: 12px;
-  }
-
-  .login-form button {
-    margin-top: 40px;
-    font-size: 16px;
-  }
+.login-form p {
+  margin-top: 20px;
+  font-size: 12px;
 }
-@media (max-width: 600px) {
-  .background .shape {
-    display: none;
-  }
+.signup-class {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.signup-form {
+  width: 90%;
+  padding: 30px 15px;
+  height: 520px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+}
+.signup-form * {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+.signup-form h3 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
 
-  .login-form form h3 {
-    font-size: 20px;
+.signup-form label {
+  display: block;
+  margin-top: 0px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.signup-form input {
+  display: block;
+  height: 30px;
+  width: 100%;
+  background-color: rgba(50, 48, 48, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+::placeholder {
+  color: var(--secondary-gray);
+}
+.signup-form button {
+  margin-top: 7px;
+  width: 100%;
+  background-color: #fff7f2;
+  color: #080710;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.signup-form p {
+  margin-top: 20px;
+  font-size: 12px;
+}
+@media (min-width: 768px) {
+  .login-form {
+    width: 50%;
   }
-
-  .login-form label {
-    margin-top: 15px;
-    font-size: 12px;
-  }
-
-  .login-form input {
-    height: 35px;
-    font-size: 11px;
-  }
-
-  .login-form button {
-    margin-top: 30px;
-    font-size: 14px;
+  .signup-form {
+    width: 50%;
   }
 }

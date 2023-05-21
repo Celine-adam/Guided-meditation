@@ -9,6 +9,7 @@ import Login from "./Components/Views/Login";
 import PlayList from "./Components/Views/PlayList";
 
 import DateContextProvider from "./Context/DateContext";
+import Signup from "./Components/Views/Signup";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route exact path="/guided" element={<Meditations />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/playList" element={<PlayList />} />
           <Route
             path="*"
