@@ -11,7 +11,8 @@ export const generateToken = (user) => {
   // by jwt
   // itself
   //sub = user._id --> assign user id to sub claim
-  const payload = { sub: user._id };
+
+  const payload = { sub: user._id }; // i nedd to change it
 
   return jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: "1h",

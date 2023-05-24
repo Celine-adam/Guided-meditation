@@ -7,8 +7,8 @@ export default function Home() {
   const [randomAffirmation, setRandomAffirmation] = useState(null);
   const [randomMessage, setRandomMessage] = useState(null);
   const [showAffirmation, setShowAffirmation] = useState(true);
-  const [favorite, setFavorite] = useState([]);
-  const { url } = useContext(DateContext);
+
+  const { url, favorite, setFavorite } = useContext(DateContext);
 
   // const url = "https://guided-meditation.onrender.com";
   const handleToggle = () => {
@@ -43,7 +43,7 @@ export default function Home() {
   const handleFavorite = () => {
     const favoriteContent = showAffirmation ? randomAffirmation : randomMessage;
     setFavorite([...favorite, favoriteContent]);
-    console.log(favorite);
+    console.log("this fav list from home", favorite);
   };
 
   return (
@@ -71,10 +71,10 @@ export default function Home() {
           ) : (
             <p>Loading Message...</p>
           )}
-          <button className="btn-favorite" onClick={handleFavorite}>
-            <FaRegHeart className="favorite-icon" />
-          </button>
         </div>
+        <button className="btn-favorite" onClick={handleFavorite}>
+          <FaRegHeart className="favorite-icon" />
+        </button>
       </section>
     </>
   );

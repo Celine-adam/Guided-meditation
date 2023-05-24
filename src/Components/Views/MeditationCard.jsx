@@ -1,12 +1,29 @@
 import React from "react";
 
+// import { useContext } from "react";
+// import axios from "axios";
+// import DateContext from "../../Context/DateContext.js";
+
 export default function MeditationCard({ card, handelAddPlayList, index }) {
+  // const { url } = useContext(DateContext);
+  // const [Audio,setAudio]= useState();
+
+  // const fetchAudio= async () => {
+  //   try {
+  //     const res = await axios.get(`${url}/`);
+
+  //     setMeditations();
+
+  //     console.log("it is working");
+  //   } catch (error) {
+  //     console.log("Resource not found");
+  //   }
+  // };
   return (
     <div>
       <div className="card">
         <div className="card__view">
           <div className="card__view__data">
-            <p className="card__view__preview">Preview</p>
             <p className="card__play__icon">
               <svg width="8px" height="8px" viewBox="-0.5 0 7 7" version="1.1">
                 <g

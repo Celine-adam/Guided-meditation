@@ -2,6 +2,7 @@ import React from "react";
 
 import { ImCross, ImMenu } from "react-icons/im";
 import { Link } from "react-router-dom";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export default function Header() {
   return (
@@ -27,9 +28,16 @@ export default function Header() {
         <Link className="a" to={"/playList"}>
           <span>PlayList </span>
         </Link>
+        <Link className="a" to={"/favorite"}>
+          <span>Favorite </span>
+        </Link>
+
         <Link className="a" to={"/login"}>
           <span>Login </span>
         </Link>
+        <button className="btn-signout">
+          Sign out <FaSignOutAlt />
+        </button>
       </div>
     </>
   );

@@ -13,7 +13,7 @@ export default function Signup() {
         <input type="text" placeholder="last name" id="lastname" />
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username" />
+        <input type="text" placeholder="your username" id="username" />
 
         <label for="email">Email</label>
         <input type="email" placeholder="your email " id="email" />

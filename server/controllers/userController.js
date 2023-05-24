@@ -63,9 +63,7 @@ export const loginUser = async (req, res) => {
         .status(StatusCodes.UNAUTHORIZED)
         .json({ message: "User not authorized." });
     }
-    // is the password matching with the password provided by that user?
-    // if(req.body.password === user.password)
-    //bcrypt.compare("testing123","$2b$10$5USrSV.w/AqueUssk5/7beH2IOLNjKltH7Q9Mo1bZBPE7aNkGgQBi")
+
     const checkPassword = await bcrypt.compare(
       req.body.password,
       user.password
@@ -79,15 +77,25 @@ export const loginUser = async (req, res) => {
     //generate our token
     const token = generateToken(user);
 
-    //if authorized : send back a token
     return res
-      .status(StatusCodes.OK)
-      .json({ message: "Welcome to the system", token });
+      .status(200)
+      .cookie("jwt", token, { httpOnly: true, sameSite: "lax", secure: false })
+      .json({
+        message: "Login successful",
+
+        user: { username: user.userName },
+      });
   } catch (error) {
-    return res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ message: error.toString() });
+    res.status(StatusCodes.BAD_REQUEST).send(error.message);
   }
 };
 
-export default { createUser, loginUser };
+export const logoutUser = (request, response) => {
+  response
+    .clearCookie("jwt", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false,
+    })
+    .send("User is logged out");
+};
