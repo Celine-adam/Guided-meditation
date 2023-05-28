@@ -33,7 +33,7 @@ export const uploadFile = async (req, res) => {
 
     return res
       .status(StatusCodes.OK)
-      .json({ message: "file uploaded", newFile });
+      .json({ message: "file uploaded", newFile, filePath: req.file.path });
   } catch (error) {
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
