@@ -48,7 +48,7 @@ app.use("/api/affirmations", affirmationRouter);
 app.use("/api/meditations", mediatationRouter);
 app.use("/api/user", userRoutes);
 app.use("/api/message", messageRoutes);
-app.use("/api/file", fileRoutes);
+app.use("/api/files", fileRoutes);
 
 app.all("*", (req, res) => {
   return res.status(StatusCodes.NOT_FOUND).json({ message: "Invalid path" });
