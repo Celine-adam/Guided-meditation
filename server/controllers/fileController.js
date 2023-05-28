@@ -2,6 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import File from "../models/File.js";
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
+
 console.log("the import filename", import.meta.url); //full URL to the module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -33,7 +34,7 @@ export const uploadFile = async (req, res) => {
 
     return res
       .status(StatusCodes.OK)
-      .json({ message: "file uploaded", newFile, filePath: req.file.path });
+      .json({ message: "file uploaded", newFile });
   } catch (error) {
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
