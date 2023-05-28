@@ -635,6 +635,41 @@ Modify the background-image with the address of the cover to use. */
 .upload-section {
   width: 100%;
 }
+.file-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 30px 15px;
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  padding: 50px 35px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  padding: 50px 35px;
+}
+.file-form button {
+  width: 100%;
+  background-color: #fff7f2;
+  color: var(--secondary-black);
+  padding: 5px 0;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+.file-form input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+  border: none;
+}
 
 .upload-container {
   width: 100%;
@@ -646,6 +681,7 @@ Modify the background-image with the address of the cover to use. */
   justify-content: center;
   margin-top: 4rem;
 }
+
 .upload-form {
   display: flex;
   flex-direction: column;
@@ -669,6 +705,7 @@ Modify the background-image with the address of the cover to use. */
   margin-top: 8px;
   font-size: 14px;
   font-weight: 300;
+  border: none;
 }
 .upload-form button {
   margin-top: 50px;
@@ -680,6 +717,7 @@ Modify the background-image with the address of the cover to use. */
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+  border: none;
 }
 @media (min-width: 768px) {
   .upload-container {

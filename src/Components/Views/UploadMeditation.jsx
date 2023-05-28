@@ -3,21 +3,36 @@ import axios from "../../Util/axiosInstance";
 
 export default function UploadMeditation() {
   const [audioId, setAudioId] = useState(null);
+  const [imageId, setImageId] = useState(null);
   useEffect(() => {
-    console.log(audioId);
-  }, [audioId]);
+    console.log(audioId, imageId);
+  }, [audioId, imageId]);
 
-  const onSubmitForm = async (event) => {
+  const handleAudioUpload = async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
 
-    //POST request to the server with the filedata
     try {
       const res = await axios.post("/api/files/create", formData);
 
       console.log("the response is ", res);
       setAudioId(res.data.newFile._id);
+      console.log(audioId);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleImageUpload = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    try {
+      const res = await axios.post("/api/files/create", formData);
+
+      console.log("the response is ", res);
+      setImageId(res.data.newFile._id);
       console.log(audioId);
     } catch (error) {
       console.error(error);
@@ -43,11 +58,14 @@ export default function UploadMeditation() {
     <div className="upload-section">
       <div className="upload-container ">
         <h1>upload your Meditation</h1>
-        <form className="upload-form" onSubmit={onSubmitForm}>
-          {/* set the name of input to image  */}
-          <input type="file" name="image" multiple={false} />
-          <button>Upload</button>
+
+        <form className="file-form">
+          <input type="file" name="file" multiple={false} />
+          <button onClick={handleAudioUpload}>Upload audio</button>
+          <input type="file" name="file" multiple={false} />
+          <button onClick={handleImageUpload}>Upload image</button>
         </form>
+
         <form className="upload-form" onSubmit={handleSubmitForm2}>
           <label>
             <input
