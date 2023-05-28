@@ -17,7 +17,10 @@ export default function Header() {
         </i>
       </label>
       <div class="sidebar">
-        <header>Menu</header>
+        <div>
+          <header>Hi!</header>
+        </div>
+
         <Link className="a" to={"/"}>
           <span>Home</span>
         </Link>
@@ -25,13 +28,15 @@ export default function Header() {
         <Link className="a" to={"/guided"}>
           <span> Meditations </span>
         </Link>
+        <Link className="a" to={"/Uploadform"}>
+          <span> Upload Meditation </span>
+        </Link>
         <Link className="a" to={"/playList"}>
           <span>PlayList </span>
         </Link>
         <Link className="a" to={"/favorite"}>
           <span>Favorite </span>
         </Link>
-
         <Link className="a" to={"/login"}>
           <span>Login </span>
         </Link>

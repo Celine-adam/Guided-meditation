@@ -33,3 +33,22 @@ export const listMeditationsbyTime = async (req, res) => {
       .json({ message: error.toString() });
   }
 };
+export const createMeditation = async (req, res) => {
+  try {
+    const createMeditation = await Meditation.create({
+      title: req.body.title,
+      description: req.body.description,
+      audio: req.body.audio,
+      time: req.body.time,
+      user: req.body.user,
+    });
+
+    return res
+      .status(StatusCodes.OK)
+      .json({ message: "meditation was created", createMeditation });
+  } catch (error) {
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: error.toString() });
+  }
+};

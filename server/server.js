@@ -10,6 +10,7 @@ import mediatationRouter from "./routes/meditationRouter.js";
 import userRoutes from "./routes/userRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
 import { configureJwtStrategy } from "./routes/passport-config.js";
+import fileRoutes from "./routes/fileRoutes.js";
 
 dotenv.config();
 
@@ -20,9 +21,11 @@ app.use(
     origin: true, //Access-Control-Allow-Origin *
   })
 );
-app.use(cookieParser());
-configureJwtStrategy(passport);
 app.use(express.json());
+app.use(cookieParser());
+
+configureJwtStrategy(passport);
+
 app.use(express.urlencoded({ extended: true }));
 
 mongoose
@@ -45,6 +48,7 @@ app.use("/api/affirmations", affirmationRouter);
 app.use("/api/meditations", mediatationRouter);
 app.use("/api/user", userRoutes);
 app.use("/api/message", messageRoutes);
+app.use("/api/file", fileRoutes);
 
 app.all("*", (req, res) => {
   return res.status(StatusCodes.NOT_FOUND).json({ message: "Invalid path" });

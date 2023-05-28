@@ -1,11 +1,10 @@
 import React from "react";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { DateContext } from "../../Context/DateContext";
+import axios from "../../Util/axiosInstance";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-  const { url } = useContext(DateContext);
+export default function Login({ handleLogin }) {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -14,10 +13,10 @@ export default function Login() {
       password: formData.get("password"),
     };
     try {
-      const res = await axios.post(`${url}/api/user/login`, data, {
-        withCredentials: true,
-      });
+      const res = await axios.post("/api/user/login", data);
       console.log(res.data);
+      handleLogin(); // Call the handleLogin function after successful login
+      navigate("/"); // Navigate to the home page or any other authorized page
     } catch (error) {
       console.error("there was an error", error);
     }
@@ -29,7 +28,7 @@ export default function Login() {
         <h3>Log in</h3>
 
         <label>
-          Username
+          UserName
           <input name="userName" type="text" required={true} />
         </label>
         <label>

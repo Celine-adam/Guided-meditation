@@ -1,16 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { DateContext } from "../../Context/DateContext.js";
 import { FaRegHeart } from "react-icons/fa";
-import axios from "axios";
+import axios from "../../Util/axiosInstance";
 
 export default function Home() {
   const [randomAffirmation, setRandomAffirmation] = useState(null);
   const [randomMessage, setRandomMessage] = useState(null);
   const [showAffirmation, setShowAffirmation] = useState(true);
 
-  const { url, favorite, setFavorite } = useContext(DateContext);
+  const { favorite, setFavorite } = useContext(DateContext);
 
-  // const url = "https://guided-meditation.onrender.com";
   const handleToggle = () => {
     setShowAffirmation(!showAffirmation);
   };
@@ -24,7 +23,7 @@ export default function Home() {
 
   const fetchAMessages = async () => {
     try {
-      const res = await axios.get(`${url}/api/message/list`);
+      const res = await axios.get(`/api/message/list`);
       const randomIndex = Math.floor(Math.random() * res.data.length);
       setRandomMessage(res.data[randomIndex]);
     } catch (error) {
@@ -33,7 +32,7 @@ export default function Home() {
   };
   const fetchAffirmations = async () => {
     try {
-      const res = await axios.get(`${url}/api/affirmations/list`);
+      const res = await axios.get(`/api/affirmations/list`);
       const randomIndex = Math.floor(Math.random() * res.data.length);
       setRandomAffirmation(res.data[randomIndex]);
     } catch (error) {

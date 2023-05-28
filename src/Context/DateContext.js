@@ -4,7 +4,7 @@ export const DateContext = createContext();
 
 export default function DateContextProvider({ children }) {
   const [playList, setPlayList] = useState([]);
-  const [url, setUrl] = useState("https://guided-meditation.onrender.com");
+  const [userName, setUserName] = useState("");
   const [favorite, setFavorite] = useState([]);
 
   return (
@@ -12,10 +12,10 @@ export default function DateContextProvider({ children }) {
       value={{
         playList,
         setPlayList,
-        url,
-        setUrl,
         favorite,
         setFavorite,
+        userName,
+        setUserName,
       }}
     >
       {children}

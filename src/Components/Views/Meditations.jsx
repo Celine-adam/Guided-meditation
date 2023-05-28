@@ -1,17 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../Util/axiosInstance";
 import { DateContext } from "../../Context/DateContext";
 import MeditationCard from "./MeditationCard.jsx";
 
 export default function Meditations() {
-  const { url, playList, setPlayList } = useContext(DateContext);
+  const { playList, setPlayList } = useContext(DateContext);
   const [meditations, setMeditations] = useState([]);
   const [page, setPage] = useState(1);
   const [selectedTime, setSelectedTime] = useState("");
 
   const fetchMeditations = async () => {
     try {
-      const res = await axios.get(`${url}/api/meditations/list`, {
+      const res = await axios.get("/api/meditations/list", {
         params: { page },
       });
 
@@ -29,7 +29,7 @@ export default function Meditations() {
 
   const fetchMeditationsByTime = async (time) => {
     try {
-      const res = await axios.get(`${url}/api/meditations/${time}`);
+      const res = await axios.get(`/api/meditations/${time}`);
 
       setMeditations(res.data);
       console.log("it is working");
@@ -87,7 +87,7 @@ export default function Meditations() {
       <div className="meditation-container">
         {meditations.map((meditation, index) => (
           <MeditationCard
-            key={index}
+            key={meditation._id}
             card={meditation}
             handelAddPlayList={handelAddPlayList}
             index={index}
