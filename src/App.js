@@ -33,9 +33,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route exact path="/guided" element={<Meditations />} />
             <Route exact path="/Uploadform" element={<UploadMeditation />} />
-
             <Route path="/profile" element={<Profile />} />
-
             <Route path="/playList" element={<PlayList />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route
