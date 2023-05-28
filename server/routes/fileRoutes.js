@@ -1,5 +1,6 @@
 import express from "express";
 import multer from "multer";
+
 import { getFileById, uploadFile } from "../controllers/fileController.js";
 
 const router = express.Router();
@@ -7,7 +8,7 @@ const router = express.Router();
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     //where to store the file
-    cb(null, "./uploads");
+    cb(null, "../Uploads");
   },
 
   //name of the file
