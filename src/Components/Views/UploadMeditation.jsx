@@ -45,6 +45,7 @@ export default function UploadMeditation() {
       title: formData.get("title"),
       description: formData.get("description"),
       audio: audioId,
+      image: imageId,
       time: formData.get("time"),
     };
     try {
@@ -59,11 +60,13 @@ export default function UploadMeditation() {
       <div className="upload-container ">
         <h1>upload your Meditation</h1>
 
-        <form className="file-form">
-          <input type="file" name="file" multiple={false} />
-          <button onClick={handleAudioUpload}>Upload audio</button>
-          <input type="file" name="file" multiple={false} />
-          <button onClick={handleImageUpload}>Upload image</button>
+        <form className="file-form" onSubmit={handleAudioUpload}>
+          <input type="file" name="image" multiple={false} />
+          <button>Upload audio</button>
+        </form>
+        <form className="file-form" onSubmit={handleImageUpload}>
+          <input type="file" name="image" multiple={false} />
+          <button>Upload image</button>
         </form>
 
         <form className="upload-form" onSubmit={handleSubmitForm2}>

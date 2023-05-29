@@ -637,19 +637,17 @@ Modify the background-image with the address of the cover to use. */
 }
 .file-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 90%;
-  padding: 30px 15px;
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
-  padding: 50px 35px;
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.5px;
   backdrop-filter: blur(10px);
-  padding: 50px 35px;
+  padding: 20px 15px;
 }
 .file-form button {
-  width: 100%;
+  width: 50%;
   background-color: #fff7f2;
   color: var(--secondary-black);
   padding: 5px 0;
@@ -679,7 +677,8 @@ Modify the background-image with the address of the cover to use. */
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 4rem;
+  gap: 2px;
+  margin-top: 5rem;
 }
 
 .upload-form {
