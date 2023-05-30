@@ -5,8 +5,8 @@ export default function UploadMeditation() {
   const [audioId, setAudioId] = useState(null);
   const [imageId, setImageId] = useState(null);
   useEffect(() => {
-    console.log(audioId, imageId);
-  }, [audioId, imageId]);
+    console.log(audioId);
+  }, [audioId]);
 
   const handleAudioUpload = async (event) => {
     event.preventDefault();

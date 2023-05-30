@@ -685,10 +685,8 @@ Modify the background-image with the address of the cover to use. */
   display: flex;
   flex-direction: column;
   width: 90%;
-  padding: 30px 15px;
   background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
-  padding: 50px 35px;
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.5px;
   backdrop-filter: blur(10px);
@@ -738,7 +736,6 @@ Modify the background-image with the address of the cover to use. */
 
 .login-form {
   width: 90%;
-  padding: 30px 15px;
   height: 520px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
