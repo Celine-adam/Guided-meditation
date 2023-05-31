@@ -46,6 +46,7 @@ export default function UploadMeditation() {
       description: formData.get("description"),
       audio: audioId,
       image: imageId,
+
       time: formData.get("time"),
     };
     try {
