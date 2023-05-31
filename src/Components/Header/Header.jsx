@@ -7,11 +7,10 @@ import axios from "../../Util/axiosInstance.js";
 export default function Header() {
   const handleSignOut = async () => {
     try {
-      const response = await axios.get("/logout");
-      // Handle successful sign-out, e.g., show a success message
-      console.log(response.data); // User is logged out
+      const response = await axios.get("/api/user/logout");
+
+      console.log(response.data);
     } catch (error) {
-      // Handle error, e.g., show an error message
       console.error(error);
     }
   };
