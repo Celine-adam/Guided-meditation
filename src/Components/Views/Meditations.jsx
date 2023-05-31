@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../Util/axiosInstance";
 import { DateContext } from "../../Context/DateContext";
 import MeditationCard from "./MeditationCard.jsx";
@@ -82,17 +83,25 @@ export default function Meditations() {
         >
           20mins
         </button>
+        <button className="bn632-hover bn20">
+          <Link className="a" to={"/Uploadform"}>
+            New
+          </Link>
+        </button>
       </div>
 
-      <div className="meditation-container">
-        {meditations.map((meditation, index) => (
-          <MeditationCard
-            key={meditation._id}
-            card={meditation}
-            handelAddPlayList={handelAddPlayList}
-            index={index}
-          />
-        ))}
+      <div class="main">
+        <ul class="cards">
+          <li class="cards_item">
+            {meditations.map((meditation) => (
+              <MeditationCard
+                key={meditation._id}
+                card={meditation}
+                handelAddPlayList={handelAddPlayList}
+              />
+            ))}
+          </li>
+        </ul>
       </div>
       <button className="btn-loadmore" onClick={handleLoadMore}>
         Load More..

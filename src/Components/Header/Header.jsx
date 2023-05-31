@@ -1,5 +1,4 @@
 import React from "react";
-
 import { ImCross, ImMenu } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
@@ -12,15 +11,14 @@ export default function Header() {
         <i id="btn">
           <ImMenu />
         </i>
-        <i class="fas fa-times fa-2x" id="cancel">
+        <i className="fas fa-times fa-2x" id="cancel">
           <ImCross />
         </i>
       </label>
-      <div class="sidebar">
+      <div className="sidebar">
         <div>
-          <header>Hi!</header>
+          <header>Hi! </header>
         </div>
-
         <Link className="a" to={"/"}>
           <span>Home</span>
         </Link>
@@ -28,9 +26,7 @@ export default function Header() {
         <Link className="a" to={"/guided"}>
           <span> Meditations </span>
         </Link>
-        <Link className="a" to={"/Uploadform"}>
-          <span> Upload Meditation </span>
-        </Link>
+
         <Link className="a" to={"/playList"}>
           <span>PlayList </span>
         </Link>

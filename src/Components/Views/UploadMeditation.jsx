@@ -33,7 +33,7 @@ export default function UploadMeditation() {
 
       console.log("the response is ", res);
       setImageId(res.data.newFile._id);
-      console.log(audioId);
+      console.log(imageId);
     } catch (error) {
       console.error(error);
     }
@@ -94,7 +94,6 @@ export default function UploadMeditation() {
               required={true}
             />
           </label>
-
           <button>save</button>
         </form>
       </div>

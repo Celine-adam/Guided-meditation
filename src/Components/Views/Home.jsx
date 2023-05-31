@@ -49,14 +49,14 @@ export default function Home() {
     <>
       <section id="hero">
         <div className="hero-container">
-          <div class="switch-button">
+          <div className="switch-button">
             <input
-              class="switch-button-checkbox"
+              className="switch-button-checkbox"
               type="checkbox"
               onChange={handleToggle}
             ></input>
-            <label class="switch-button-label">
-              <span class="switch-button-label-span">Affirmation</span>
+            <label className="switch-button-label">
+              <span className="switch-button-label-span">Affirmation</span>
             </label>
           </div>
           {showAffirmation ? (

@@ -15,8 +15,8 @@ export default function Login({ handleLogin }) {
     try {
       const res = await axios.post("/api/user/login", data);
       console.log(res.data);
-      handleLogin(); // Call the handleLogin function after successful login
-      navigate("/"); // Navigate to the home page or any other authorized page
+      handleLogin();
+      navigate("/");
     } catch (error) {
       console.error("there was an error", error);
     }
@@ -26,7 +26,6 @@ export default function Login({ handleLogin }) {
     <div className="login-class">
       <form className="login-form" onSubmit={handleSubmit}>
         <h3>Log in</h3>
-
         <label>
           UserName
           <input name="userName" type="text" required={true} />
