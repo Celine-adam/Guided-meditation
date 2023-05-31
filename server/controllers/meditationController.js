@@ -41,7 +41,7 @@ export const createMeditation = async (req, res) => {
       audio: req.body.audio,
       image: req.body.image,
       time: req.body.time,
-      user: req.body.user,
+      user: req.user._id,
     });
 
     return res
