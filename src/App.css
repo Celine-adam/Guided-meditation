@@ -382,7 +382,7 @@ label #cancel {
   padding: 1rem;
 }
 .card {
-  background-color: white;
+  background-color: var(--body-bg);
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -402,10 +402,9 @@ img {
   height: 150px;
   padding: 1rem;
   cursor: pointer;
-  background: black;
+  background: var(--body-bg);
 }
 .card_title {
-  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -413,7 +412,6 @@ img {
   margin: 0px;
 }
 .card_text {
-  color: #ffffff;
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
@@ -421,7 +419,6 @@ img {
 }
 
 .btn {
-  color: #ffffff;
   padding: 0.8rem;
   font-size: 14px;
   text-transform: uppercase;
@@ -439,12 +436,14 @@ img {
 }
 
 @media (min-width: 768px) {
-  .cards_item {
+  .main {
     display: flex;
-    flex-direction: row;
-    width: 50%;
-    flex-wrap: wrap;
-    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .cards {
+    width: 76%;
   }
 }
 /*--------------------------------------------------------------
