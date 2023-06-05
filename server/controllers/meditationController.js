@@ -38,7 +38,7 @@ export const createMeditation = async (req, res) => {
     const createMeditation = await Meditation.create({
       title: req.body.title,
       description: req.body.description,
-      audio: req.body.audio,
+      link: req.body.link,
       time: req.body.time,
     });
 
