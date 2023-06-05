@@ -43,7 +43,6 @@ function App() {
       ) : (
         <DateContextProvider>
           <Routes>
-            <Route path="/login" element={<Login />} />
             <Route
               path="/signup"
               element={<Signup handleLogin={handleLogin} />}

@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import axios from "../../Util/axiosInstance.js";
 
-export default function Header() {
+export default function Header({ handleLogout }) {
   const handleSignOut = async () => {
     try {
       const response = await axios.get("/api/user/logout");
-
       console.log(response.data);
+      handleLogout();
     } catch (error) {
       console.error(error);
     }

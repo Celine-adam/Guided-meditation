@@ -3,17 +3,22 @@ import { FaRegHeart } from "react-icons/fa";
 import { DateContext } from "../../Context/DateContext.js";
 
 export default function Favorite() {
-  const { favorite } = useContext(DateContext);
+  const { favorite, setFavorite } = useContext(DateContext);
 
-  console.log("this fav list", favorite);
+  const handleDelete = (index) => {
+    const updatedFavorites = favorite.filter((fav, i) => i !== index);
+    setFavorite(updatedFavorites);
+  };
+
   return (
     <div id="favorite-section">
       <div className="favorite-container">
-        <h1>your Favorite</h1>
+        <h1>Your Favorites</h1>
         {favorite.map((fav, index) => (
           <p className="fav-p" key={index}>
-            {" "}
-            <FaRegHeart className="favorite-icon" />
+            <button onClick={() => handleDelete(index)}>
+              <FaRegHeart className="favorite-icon" />
+            </button>
             {fav.content}
           </p>
         ))}
