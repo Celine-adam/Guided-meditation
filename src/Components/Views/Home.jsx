@@ -56,7 +56,7 @@ export default function Home() {
               onChange={handleToggle}
             ></input>
             <label className="switch-button-label">
-              <span className="switch-button-label-span">Affirmation</span>
+              <span className="switch-button-label-span">affirmation</span>
             </label>
           </div>
           {showAffirmation ? (

@@ -167,7 +167,7 @@ label #cancel {
 }
 
 .switch-button:before {
-  content: "Message";
+  content: "message";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -193,8 +193,9 @@ label #cancel {
 }
 
 .switch-button-checkbox:checked + .switch-button-label:before {
-  transform: translateX(120px);
+  transform: translateX(143px);
   transition: transform 300ms linear;
+  width: 155px;
 }
 
 .switch-button-checkbox + .switch-button-label {
@@ -219,6 +220,7 @@ label #cancel {
 
 .switch-button-label-span {
   position: relative;
+  margin-left: 19px;
 }
 
 .hero-container p {
@@ -292,8 +294,8 @@ label #cancel {
 /* ---meditation section--------------------------------------------------- */
 
 #meditation-section {
-  width: 100%;
   height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,16 +347,51 @@ label #cancel {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.cards-container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  gap: 5px;
+}
+.card {
+  width: 500px;
+  background: var(--body-bg);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+.card .card_content h2 {
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: var(--secondary-black);
+  text-decoration: none;
+  transition: all 0.35s ease-in;
+}
+.card .card_content p {
+  font-size: 16px;
+  color: var(--secondary-gray);
+  margin: 10px 0;
+}
+.card iframe {
+  flex: 1;
+  min-height: 150px;
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 4px;
+}
 
 @media (min-width: 768px) {
-  /* .meditation-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 50px;
-  } */
   .filter-container .bn632-hover {
     width: 160px;
     font-size: 16px;
@@ -362,6 +399,10 @@ label #cancel {
     cursor: pointer;
     margin: 20px;
     height: 55px;
+  }
+  .cards-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -380,6 +421,7 @@ label #cancel {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  gap: 5px;
 }
 .card {
   background-color: var(--body-bg);
@@ -389,19 +431,15 @@ label #cancel {
   flex-direction: column;
   overflow: hidden;
 }
-.card_image {
+.card_video {
   height: 200px;
 }
 
-img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
+iframe {
+  width: 100%;
+  height: 100%;
 }
 .card_content {
-  height: 150px;
-  padding: 1rem;
-  cursor: pointer;
   background: var(--body-bg);
 }
 .card_title {
@@ -418,32 +456,56 @@ img {
   font-weight: 400;
 }
 
-.btn {
-  padding: 0.8rem;
-  font-size: 14px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  font-weight: 400;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
-}
-
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
 @media (min-width: 768px) {
   .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    margin: 0 auto;
   }
   .cards {
-    width: 76%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cards_item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 5px;
+  }
+  .card {
+    background-color: var(--body-bg);
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .card_video {
+    height: 200px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+  .card_content {
+    background: var(--body-bg);
+  }
+  .card_title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+  }
+  .card_text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
   }
 }
 /*--------------------------------------------------------------

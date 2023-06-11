@@ -90,19 +90,18 @@ export default function Meditations() {
         </button>
       </div>
 
-      <div class="main">
-        <ul class="cards">
-          <li class="cards_item">
-            {meditations.map((meditation) => (
-              <MeditationCard
-                key={meditation._id}
-                card={meditation}
-                handelAddPlayList={handelAddPlayList}
-              />
-            ))}
-          </li>
-        </ul>
+      <div class="cards-container">
+        <div class="cards-wrapper">
+          {meditations.map((meditation, index) => (
+            <MeditationCard
+              key={index}
+              card={meditation}
+              handelAddPlayList={handelAddPlayList}
+            />
+          ))}
+        </div>
       </div>
+
       <button className="btn-loadmore" onClick={handleLoadMore}>
         Load More..
       </button>
