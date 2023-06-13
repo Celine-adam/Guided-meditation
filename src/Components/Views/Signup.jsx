@@ -18,8 +18,8 @@ export default function Signup({ handleLogin }) {
     try {
       const res = await axios.post("/api/user/create", data);
       console.log(res.data);
-      handleLogin();
-      navigate("/login");
+
+      navigate("/");
     } catch (error) {
       console.error("there was an error", error);
     }
@@ -50,7 +50,7 @@ export default function Signup({ handleLogin }) {
         </label>
         <button>Sign up</button>
         <p>
-          Have an account? Log in? <Link to={"/login"}>Log in </Link>
+          Have an account? Log in? <Link to={"/"}>Log in </Link>
         </p>
       </form>
     </div>

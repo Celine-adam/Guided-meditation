@@ -31,10 +31,10 @@ function App() {
             <Route exact path="/Uploadform" element={<UploadMeditation />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/favorite" element={<Favorite />} />
-            <Route
+            {/* <Route
               path="/login"
               element={<Login handleLogin={handleLogin} />}
-            />
+            /> */}
             <Route
               path="*"
               element={<p>I don't know this page. There was a 404 error</p>}
@@ -48,14 +48,7 @@ function App() {
               path="/signup"
               element={<Signup handleLogin={handleLogin} />}
             />
-            <Route
-              path="/login"
-              element={<Login handleLogin={handleLogin} />}
-            />
-            <Route
-              path="*"
-              element={<p>I don't know this page. There was a 404 error</p>}
-            />
+            <Route path="/" element={<Login handleLogin={handleLogin} />} />
           </Routes>
         </DateContextProvider>
       )}
