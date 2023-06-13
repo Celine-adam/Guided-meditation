@@ -1,52 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "../../Util/axiosInstance";
 
 export default function UploadMeditation() {
-  const [audioId, setAudioId] = useState(null);
-  const [imageId, setImageId] = useState(null);
-  useEffect(() => {
-    console.log(audioId);
-  }, [audioId]);
-
-  const handleAudioUpload = async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    try {
-      const res = await axios.post("/api/files/create", formData);
-
-      console.log("the response is ", res);
-      setAudioId(res.data.newFile._id);
-      console.log(audioId);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handleImageUpload = async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    try {
-      const res = await axios.post("/api/files/create", formData);
-
-      console.log("the response is ", res);
-      setImageId(res.data.newFile._id);
-      console.log(imageId);
-    } catch (error) {
-      console.error(error);
-    }
-  };
   const handleSubmitForm2 = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = {
       title: formData.get("title"),
       description: formData.get("description"),
-      audio: audioId,
-      image: imageId,
-
+      link: formData.get("link"),
       time: formData.get("time"),
     };
     try {
@@ -58,46 +20,37 @@ export default function UploadMeditation() {
   };
   return (
     <div className="upload-section">
-      <div className="upload-container ">
-        <h1>upload your Meditation</h1>
-
-        <form className="file-form" onSubmit={handleAudioUpload}>
-          <input type="file" name="image" multiple={false} />
-          <button>Upload audio</button>
-        </form>
-        <form className="file-form" onSubmit={handleImageUpload}>
-          <input type="file" name="image" multiple={false} />
-          <button>Upload image</button>
-        </form>
-
-        <form className="upload-form" onSubmit={handleSubmitForm2}>
-          <label>
-            <input
-              name="title"
-              type="text"
-              placeholder="Title"
-              required={true}
-            />
-          </label>
-          <label>
-            <input
-              name="description"
-              type="text"
-              placeholder="Description"
-              required={true}
-            />
-          </label>
-          <label>
-            <input
-              name="time"
-              type="text"
-              placeholder="Time of Mp3"
-              required={true}
-            />
-          </label>
-          <button>save</button>
-        </form>
-      </div>
+      <h1>upload your Meditation</h1>
+      <form className="upload-form" onSubmit={handleSubmitForm2}>
+        <label>
+          <input name="title" type="text" placeholder="Title" required={true} />
+        </label>
+        <label>
+          <input
+            name="description"
+            type="text"
+            placeholder="Description"
+            required={true}
+          />
+        </label>
+        <label>
+          <input
+            name="link"
+            type="text"
+            placeholder="link the meditation"
+            required={true}
+          />
+        </label>
+        <label>
+          <input
+            name="time"
+            type="text"
+            placeholder="Time should be 5 or 10 or 20 min"
+            required={true}
+          />
+        </label>
+        <button>save</button>
+      </form>
     </div>
   );
 }

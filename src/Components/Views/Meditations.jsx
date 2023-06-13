@@ -1,11 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../Util/axiosInstance";
-import { DateContext } from "../../Context/DateContext";
 import MeditationCard from "./MeditationCard.jsx";
 
 export default function Meditations() {
-  const { playList, setPlayList } = useContext(DateContext);
   const [meditations, setMeditations] = useState([]);
   const [page, setPage] = useState(1);
   const [selectedTime, setSelectedTime] = useState("");
@@ -54,10 +52,6 @@ export default function Meditations() {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const handelAddPlayList = (index) => {
-    setPlayList([...playList, meditations[index]]);
-  };
-
   return (
     <section className="meditation-section">
       <h2 className="heading-meditation">Guided Meditation</h2>
@@ -93,11 +87,7 @@ export default function Meditations() {
       <div class="cards-container">
         <div class="cards-wrapper">
           {meditations.map((meditation, index) => (
-            <MeditationCard
-              key={index}
-              card={meditation}
-              handelAddPlayList={handelAddPlayList}
-            />
+            <MeditationCard key={index} card={meditation} />
           ))}
         </div>
       </div>

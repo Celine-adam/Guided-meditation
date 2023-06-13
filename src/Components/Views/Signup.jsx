@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../../Util/axiosInstance";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup({ handleLogin }) {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -17,6 +19,7 @@ export default function Signup({ handleLogin }) {
       const res = await axios.post("/api/user/create", data);
       console.log(res.data);
       handleLogin();
+      navigate("/login");
     } catch (error) {
       console.error("there was an error", error);
     }

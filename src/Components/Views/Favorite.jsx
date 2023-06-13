@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { FaRegHeart } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { DateContext } from "../../Context/DateContext.js";
 
 export default function Favorite() {
   const { favorite, setFavorite } = useContext(DateContext);
-
   const handleDelete = (index) => {
     const updatedFavorites = favorite.filter((fav, i) => i !== index);
     setFavorite(updatedFavorites);
@@ -12,15 +11,15 @@ export default function Favorite() {
 
   return (
     <div id="favorite-section">
+      <h1>Your Favorites</h1>
       <div className="favorite-container">
-        <h1>Your Favorites</h1>
         {favorite.map((fav, index) => (
-          <p className="fav-p" key={index}>
+          <div className="div-fav" key={index}>
             <button onClick={() => handleDelete(index)}>
-              <FaRegHeart className="favorite-icon" />
+              <FaTimes className="remove-icon" />
             </button>
-            {fav.content}
-          </p>
+            <p className="fav-p">{fav.content}</p>
+          </div>
         ))}
       </div>
     </div>

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto+Mono:wght@300;500&family=Poppins:wght@600&display=swap");
-
+* {
+  box-sizing: border-box;
+}
 :root {
   --primary-color: #9182ba;
   --secondary-black: #0d081a;
@@ -8,12 +10,11 @@
 }
 
 .App {
-  height: 100vh;
-  width: 100vw;
-  box-sizing: border-box;
+  max-height: 100vh;
+  max-width: 100vw;
   font-family: "Roboto Mono";
   font-size: 16px;
-  scroll-behavior: smooth;
+  padding: 0;
 }
 
 .a {
@@ -52,7 +53,6 @@ p {
   text-transform: uppercase;
   text-align: center;
   font-size: 2rem;
-
   font-family: "Montserrat";
 }
 .sidebar .btn-signout {
@@ -136,17 +136,9 @@ label #cancel {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-#hero {
-  height: 90%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
 
 #hero .hero-container {
   display: flex;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -230,11 +222,6 @@ label #cancel {
   color: var(--secondary-gray);
 }
 .btn-favorite {
-  position: absolute;
-  right: 5px;
-  bottom: 0px;
-  width: 50px;
-  height: 50px;
   background: transparent;
   border: 1px solid var(--primary-color);
 }
@@ -261,58 +248,66 @@ label #cancel {
 
 /* ----favorite----------------------------------------------- */
 #favorite-section {
+  box-sizing: border-box;
   width: 100%;
   height: 90%;
   display: flex;
-  text-align: center;
-  justify-content: center;
+  flex-direction: column;
 }
 .favorite-container {
   margin: 15px 10px 0 10px;
 }
-.favorite-container h1 {
-  margin-top: 55px;
+#favorite-section h1 {
+  margin-top: 58px;
+  text-align: center;
 }
-.favorite-container .fav-p {
+.div-fav {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
   border: 1px solid var(--primary-color);
-  width: 100%;
-  height: 50px;
-  font-size: 15px;
-  text-align: left;
 }
-.favorite-container .fav-p .favorite-icon {
-  margin-right: 5px;
+.div-fav button {
+  padding: 5px;
+  position: absolute;
+  top: 10%;
+  left: 2px;
+  transform: translate(-2px, 10%);
+  border: none;
+  cursor: pointer;
 }
+.div-fav button .remove-icon {
+  color: var(--primary-color);
+}
+
+.div-fav p {
+  margin-left: 40px;
+  font-size: 12px;
+}
+
 @media (min-width: 768px) {
   .favorite-container {
-    width: 90%;
+    margin: 30px;
+    text-align: center;
   }
-  .favorite-container .fav-p {
-    font-size: 18px;
+  .div-fav p {
+    font-size: 20px;
   }
 }
 /* ---meditation section--------------------------------------------------- */
 
-#meditation-section {
-  height: 100%;
-  width: 100%;
+.meditation-section {
+  min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  justify-items: center;
 }
 .heading-meditation {
-  margin-top: 70px;
-  margin-bottom: 1rem;
+  margin-top: 58px;
+  text-align: center;
 }
 
-#meditation-section .container {
-  width: 90%;
-  margin: 0 auto;
-  max-width: 1000px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .filter-container {
   width: 50%;
   margin: 0 auto;
@@ -353,6 +348,7 @@ label #cancel {
   justify-items: center;
 }
 .cards-wrapper {
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -360,7 +356,7 @@ label #cancel {
   gap: 5px;
 }
 .card {
-  width: 500px;
+  width: 90%;
   background: var(--body-bg);
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
@@ -403,6 +399,9 @@ label #cancel {
   .cards-wrapper {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  .card {
+    width: 500px;
   }
 }
 
@@ -509,58 +508,127 @@ iframe {
   }
 }
 /*--------------------------------------------------------------
-# upload
+# Journal
 --------------------------------------------------------------*/
-.upload-section {
-  width: 100%;
-}
-.file-form {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  background-color: rgba(255, 255, 255, 0.13);
-  border-radius: 10px;
-  font-family: "Poppins", sans-serif;
-  letter-spacing: 0.5px;
-  backdrop-filter: blur(10px);
-  padding: 20px 15px;
-}
-.file-form button {
-  width: 50%;
-  background-color: #fff7f2;
-  color: var(--secondary-black);
-  padding: 5px 0;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  border: none;
-}
-.file-form input {
-  display: block;
-  height: 50px;
-  width: 100%;
-  border-radius: 3px;
-  padding: 0 10px;
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-  border: none;
-}
-
-.upload-container {
-  width: 100%;
-  height: 700px;
-  max-width: 1000px;
+#journal-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  margin-top: 5rem;
+  margin-top: 0;
+  padding: 0;
+}
+.journal-container {
+  max-width: 97vw;
+}
+#journal-section h1 {
+  margin-top: 58px;
+  text-align: center;
+}
+.journal-form {
+  margin: 2px 2px 2px 19px;
+  width: 90%;
+}
+.journal-form textarea {
+  width: 99%;
+  border: 2px solid var(--body-bg);
+  border-radius: 5px;
+  outline: none;
+}
+.journal-form button {
+  padding: 10px 24px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  border: none;
+}
+.div-journal {
+  width: 99%;
+  word-wrap: break-word;
+}
+.div-date {
+  display: flex;
+  flex-direction: row;
+}
+
+.journal-date {
+  font-size: 14px;
+  color: var(--secondary-gray);
+  border-bottom: 3px solid gray;
+}
+
+.div-date button {
+  position: absolute;
+  right: 30px;
+  width: 5px;
+  height: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.div-journal button .remove-icon {
+  color: var(--primary-color);
+}
+
+.journal-content {
+  flex-grow: 2;
+  height: fit-content;
+  font-size: 18px;
+}
+
+@media (min-width: 766px) {
+  .journal-container {
+    width: 100%;
+  }
+
+  .journal-form {
+    width: 750px;
+    height: 200px;
+    margin-left: 602px;
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+  .journal-form textarea {
+    height: 100px;
+  }
+
+  .div-journal {
+    width: 90%;
+    height: 100px;
+    word-wrap: break-word;
+    margin-left: 90px;
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
+  .div-date button {
+    position: relative;
+    left: 5px;
+    width: 5px;
+    height: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .div-journal button .remove-icon {
+    color: var(--primary-color);
+  }
+
+  .journal-content {
+    flex-grow: 2;
+    height: fit-content;
+    font-size: 18px;
+  }
+}
+
+/*--------------------------------------------------------------
+# upload
+--------------------------------------------------------------*/
+
+.upload-section h1 {
+  margin-top: 65px;
+  text-align: center;
 }
 
 .upload-form {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -608,19 +676,19 @@ iframe {
 # log in
 --------------------------------------------------------------*/
 .login-class {
-  width: 100%;
-  height: 87%;
-  position: relative;
+  min-height: 100vh;
+  min-width: 100vw;
+  scroll-behavior: auto;
 }
 
 .login-form {
-  width: 90%;
-  height: 520px;
-  background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
-  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
+  width: 87%;
+  height: 520px;
+  background-color: rgba(255, 255, 255, 0.13);
   border-radius: 10px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -674,9 +742,9 @@ iframe {
   margin-top: 20px;
   font-size: 12px;
 }
+
 .signup-class {
-  width: 100%;
-  height: 100%;
+  min-height: 100vh;
   position: relative;
 }
 .signup-form {

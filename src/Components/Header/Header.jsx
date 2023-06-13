@@ -37,14 +37,11 @@ export default function Header({ handleLogout }) {
           <span> Meditations </span>
         </Link>
 
-        <Link className="a" to={"/playList"}>
-          <span>PlayList </span>
+        <Link className="a" to={"/journal"}>
+          <span>Journal</span>
         </Link>
         <Link className="a" to={"/favorite"}>
           <span>Favorite </span>
-        </Link>
-        <Link className="a" to={"/login"}>
-          <span>Login </span>
         </Link>
         <button className="btn-signout" onClick={handleSignOut}>
           Sign out <FaSignOutAlt />
