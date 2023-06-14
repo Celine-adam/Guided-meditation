@@ -11,6 +11,12 @@ import userRoutes from "./routes/userRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
 import { configureJwtStrategy } from "./routes/passport-config.js";
 import fileRoutes from "./routes/fileRoutes.js";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __filename = fileURLToPath(import.meta.url); // get the current file location of server.js
+const __dirname = dirname(__filename); //extract directory from that location.
 
 dotenv.config();
 
@@ -49,10 +55,15 @@ app.use("/api/meditations", mediatationRouter);
 app.use("/api/user", userRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/files", fileRoutes);
-
-app.all("*", (req, res) => {
-  return res.status(StatusCodes.NOT_FOUND).json({ message: "Invalid path" });
+//serve our files statically
+app.use(express.static(path.join(__dirname, "../build")));
+//any other request made serve the index.html of our production build frontend.
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/client/build/index.html");
 });
+// app.all("*", (req, res) => {
+//   return res.status(StatusCodes.NOT_FOUND).json({ message: "Invalid path" });
+// });
 
 app.listen(5005, () => {
   console.log("The server is listening for requests....");

@@ -14,7 +14,6 @@ export default function Login({ handleLogin }) {
       const res = await axios.post("/api/user/login", data);
       console.log(res.data);
       handleLogin();
-
       console.log(handleLogin);
     } catch (error) {
       console.error("there was an error", error);

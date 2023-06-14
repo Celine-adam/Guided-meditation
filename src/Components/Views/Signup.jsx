@@ -18,7 +18,6 @@ export default function Signup({ handleLogin }) {
     try {
       const res = await axios.post("/api/user/create", data);
       console.log(res.data);
-
       navigate("/");
     } catch (error) {
       console.error("there was an error", error);
