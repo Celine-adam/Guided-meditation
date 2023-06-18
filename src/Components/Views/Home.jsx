@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { DateContext } from "../../Context/DateContext.js";
 import { FaRegHeart } from "react-icons/fa";
 import axios from "../../Util/axiosInstance";
+import heroImage from "../../img/vecteezy_vector-illustration-of-a-girl-in-a-yoga-pose-without-a-face_11426491.jpg";
 
 export default function Home() {
   const [randomAffirmation, setRandomAffirmation] = useState(null);
@@ -45,18 +46,21 @@ export default function Home() {
   };
 
   return (
-    <>
-      <section id="hero">
-        <div className="hero-container">
-          <div className="switch-button">
-            <input
-              className="switch-button-checkbox"
-              type="checkbox"
-              onChange={handleToggle}
-            ></input>
-            <label className="switch-button-label">
-              <span className="switch-button-label-span">affirmation</span>
-            </label>
+    <section id="hero">
+      <div className="hero-container">
+        <div className="switch-button">
+          <input
+            className="switch-button-checkbox"
+            type="checkbox"
+            onChange={handleToggle}
+          ></input>
+          <label className="switch-button-label">
+            <span className="switch-button-label-span">affirmation</span>
+          </label>
+        </div>
+        <div className="bottom">
+          <div className="hero-imag">
+            <img src={heroImage} alt="" />
           </div>
           {showAffirmation ? (
             randomAffirmation ? (
@@ -73,7 +77,7 @@ export default function Home() {
             <FaRegHeart className="favorite-icon" />
           </button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

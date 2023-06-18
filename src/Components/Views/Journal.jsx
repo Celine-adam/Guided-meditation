@@ -39,23 +39,30 @@ export default function Journal() {
 
   return (
     <div id="journal-section">
-      <h1>Journal</h1>
+      <h1>Dear Diary</h1>
+      <form onSubmit={addJournal} className="journal-form">
+        <textarea
+          type="text"
+          onChange={updateValue}
+          value={state.inputVal}
+          placeholder="How was yor day ?"
+        />
+        <button>Entry</button>
+      </form>
       <div className="journal-container">
-        <form onSubmit={addJournal} className="journal-form">
-          <textarea type="text" onChange={updateValue} value={state.inputVal} />
-          <button>Entry</button>
-        </form>
-        {state.journal.map((journal, index) => (
-          <div className="div-journal" key={index}>
-            <div className="div-date">
-              <p className="journal-date">{journal.date}</p>
-              <button onClick={() => deleteJournal(index)}>
-                <FaTimes className="remove-icon" />
-              </button>
+        <div className="journal-wrapper">
+          {state.journal.map((journal, index) => (
+            <div className="div-journal" key={index}>
+              <div className="div-date">
+                <p className="journal-date">{journal.date}</p>
+                <button onClick={() => deleteJournal(index)}>
+                  <FaTimes className="remove-icon" />
+                </button>
+              </div>
+              <p className="journal-content">{journal.content}</p>
             </div>
-            <p className="journal-content">{journal.content}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

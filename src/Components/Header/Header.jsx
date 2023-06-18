@@ -1,7 +1,7 @@
 import React from "react";
 import { ImCross, ImMenu } from "react-icons/im";
 import { Link } from "react-router-dom";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaJournalWhills } from "react-icons/fa";
 import axios from "../../Util/axiosInstance.js";
 
 export default function Header({ handleLogout }) {
@@ -16,35 +16,42 @@ export default function Header({ handleLogout }) {
   };
   return (
     <>
+      <div className="journal-header">
+        <i>
+          <FaJournalWhills />
+        </i>
+        <Link className="link" to="/journal">
+          <h2>Journal</h2>
+        </Link>
+      </div>
       <input type="checkbox" id="check"></input>
       <label for="check">
         <i id="btn">
           <ImMenu />
         </i>
-        <i className="fas fa-times fa-2x" id="cancel">
+        <i id="cancel">
+          {" "}
           <ImCross />
         </i>
       </label>
       <div className="sidebar">
-        <div>
-          <header>Hi! </header>
-        </div>
-        <Link className="a" to={"/"}>
+        <header>Hi!</header>
+
+        <Link to="/" className="link">
           <span>Home</span>
         </Link>
-
-        <Link className="a" to={"/guided"}>
-          <span> Meditations </span>
+        <Link to="/podcast" className="link">
+          <span>Podcast</span>
         </Link>
-
-        <Link className="a" to={"/journal"}>
+        <Link to="/favorite" className="link">
+          <span>Favorite</span>
+        </Link>
+        <Link to="/journal" className="link">
           <span>Journal</span>
         </Link>
-        <Link className="a" to={"/favorite"}>
-          <span>Favorite </span>
-        </Link>
+
         <button className="btn-signout" onClick={handleSignOut}>
-          Sign out <FaSignOutAlt />
+          Sign out <FaSignOutAlt className="icon" />
         </button>
       </div>
     </>

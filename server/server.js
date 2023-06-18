@@ -59,7 +59,7 @@ app.use("/api/files", fileRoutes);
 app.use(express.static(path.join(__dirname, "../build")));
 //any other request made serve the index.html of our production build frontend.
 app.get("*", (req, res) => {
-  res.sendFile(__dirname + "/client/build/index.html");
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 // app.all("*", (req, res) => {
 //   return res.status(StatusCodes.NOT_FOUND).json({ message: "Invalid path" });
