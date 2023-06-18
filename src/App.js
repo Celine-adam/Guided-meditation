@@ -27,7 +27,7 @@ function App() {
         {isAuthorized ? (
           <>
             <Header handleLogout={handleLogout} />
-            <Home />
+
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/podcast" element={<Podcast />} />
