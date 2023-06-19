@@ -34,10 +34,7 @@ function App() {
               <Route path="/favorite" element={<Favorite />} />
               <Route path="/journal" element={<Journal />} />
               <Route path="/Uploadform" element={<UploadMeditation />} />
-              {/* <Route
-                path="*"
-                element={<p>I don't know this page. There was a 404 error</p>}
-              /> */}
+    
             </Routes>
           </>
         ) : (

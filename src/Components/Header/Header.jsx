@@ -3,13 +3,16 @@ import { ImCross, ImMenu } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { FaSignOutAlt, FaJournalWhills } from "react-icons/fa";
 import axios from "../../Util/axiosInstance.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({ handleLogout }) {
+  const navigate = useNavigate();
   const handleSignOut = async () => {
     try {
       const response = await axios.get("/api/user/logout");
       console.log(response.data);
       handleLogout();
+      navigate("/");
     } catch (error) {
       console.error(error);
     }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "../../Util/axiosInstance";
 import MeditationCard from "./MeditationCard.jsx";
 
-export default function Meditations() {
+export default function Podcast() {
   const [meditations, setMeditations] = useState([]);
   const [page, setPage] = useState(1);
   const [selectedTime, setSelectedTime] = useState("");
@@ -78,7 +78,7 @@ export default function Meditations() {
           20mins
         </button>
         <button className="bn632-hover bn20">
-          <Link className="a" to={"/Uploadform"}>
+          <Link className="a" to="/Uploadform">
             New
           </Link>
         </button>
