@@ -9,6 +9,8 @@ import affirmationRouter from "./routes/affirmationRouter.js";
 import mediatationRouter from "./routes/meditationRouter.js";
 import userRoutes from "./routes/userRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
+import favoriteRoutes from "./routes/favoriteRoutes.js";
+import journalRoutes from "./routes/journalRoutes.js";
 import { configureJwtStrategy } from "./routes/passport-config.js";
 import fileRoutes from "./routes/fileRoutes.js";
 import { dirname } from "path";
@@ -55,6 +57,8 @@ app.use("/api/meditations", mediatationRouter);
 app.use("/api/user", userRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/files", fileRoutes);
+app.use("/api/favorite", favoriteRoutes);
+app.use("/api/journal", journalRoutes);
 //serve our files statically
 app.use(express.static(path.join(__dirname, "../build")));
 //any other request made serve the index.html of our production build frontend.

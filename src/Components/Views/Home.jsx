@@ -39,10 +39,20 @@ export default function Home() {
       console.log("Resource not found");
     }
   };
-  const handleFavorite = () => {
-    const favoriteContent = showAffirmation ? randomAffirmation : randomMessage;
-    setFavorite([...favorite, favoriteContent]);
-    console.log("this fav list from home", favorite);
+  const handleFavorite = async () => {
+    try {
+      const favoriteData = {
+        content: showAffirmation
+          ? randomAffirmation.content
+          : randomMessage.content,
+      };
+
+      // Send a POST request to create a favorite
+      const res = await axios.post("/api/favorite/create", favoriteData);
+      console.log(res.data.message); // Optional: Display success message
+    } catch (error) {
+      console.log("Error creating favorite:", error.response.data.message);
+    }
   };
 
   return (

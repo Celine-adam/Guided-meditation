@@ -274,6 +274,7 @@ label #cancel {
   border: none;
   background-color: var(--body-bg);
 }
+
 .hero-container .bottom .btn-favorite .favorite-icon {
   color: var(--primary-color);
   font-size: 2rem;
