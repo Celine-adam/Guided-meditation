@@ -11,7 +11,7 @@ export default function Favorite() {
 
   const fetchFavorite = async () => {
     try {
-      const res = await axios.get(`/api/favorite/list`);
+      const res = await axios.get("/api/favorite/list");
       setFavorite(res.data);
     } catch (error) {
       console.log("Resource not found");
