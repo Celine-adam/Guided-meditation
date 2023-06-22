@@ -3,7 +3,7 @@ import { FaTimes } from "react-icons/fa";
 import axios from "../../Util/axiosInstance.js";
 
 export default function Favorite() {
-  const { favorite, setFavorite } = useState([]);
+  const [favorite, setFavorite] = useState([]);
 
   useEffect(() => {
     fetchFavorite();
@@ -34,7 +34,7 @@ export default function Favorite() {
       <div className="favorite-container">
         {favorite.map((fav, index) => (
           <div className="div-fav" key={index}>
-            <button onClick={() => handleDelete(fav.id)}>
+            <button onClick={() => handleDelete(fav._id)}>
               <FaTimes className="remove-icon" />
             </button>
             <p className="fav-p">{fav.content}</p>
