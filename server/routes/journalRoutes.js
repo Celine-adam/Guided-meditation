@@ -10,5 +10,5 @@ const router = express.Router();
 router.use(passport.authenticate("jwt", { session: false }));
 router.get("/list", listJournalByUserId);
 router.post("/create", createJournal);
-router.delete("delete/:id", deleteJournalById);
+router.delete("/delete/:id", deleteJournalById);
 export default router;
