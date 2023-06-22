@@ -8,7 +8,6 @@ export default function Home() {
   const [randomAffirmation, setRandomAffirmation] = useState(null);
   const [randomMessage, setRandomMessage] = useState(null);
   const [showAffirmation, setShowAffirmation] = useState(true);
-  const { favorite, setFavorite } = useContext(DateContext);
 
   const handleToggle = () => {
     setShowAffirmation(!showAffirmation);

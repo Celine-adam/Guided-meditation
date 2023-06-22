@@ -41,3 +41,20 @@ export const listFavoriteByUserId = async (req, res) => {
       .json({ message: error.toString() });
   }
 };
+export const deleteFavoriteById = async (req, res) => {
+  try {
+    const favorite = await Favorite.findByIdAndDelete(req.params.id);
+
+    if (!favorite) {
+      return res.status(StatusCodes.NOT_FOUND).json("fav not found");
+    }
+
+    return res
+      .status(StatusCodes.OK)
+      .json({ message: "fav deleted", deletedFavorite: favorite });
+  } catch (error) {
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: "Error happened", error: error.toString() });
+  }
+};

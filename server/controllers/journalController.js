@@ -30,13 +30,30 @@ export const createJournal = async (req, res) => {
  */
 export const listJournalByUserId = async (req, res) => {
   try {
-    const listFav = await Favorite.find({
+    const listJournal = await Journal.find({
       user: req.user._id,
     }).populate("user");
-    return res.status(StatusCodes.OK).json(listFav);
+    return res.status(StatusCodes.OK).json(listJournal);
   } catch (error) {
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ message: error.toString() });
+  }
+};
+export const deleteJournalById = async (req, res) => {
+  try {
+    const journal = await Journal.findByIdAndDelete(req.params.id);
+
+    if (!journal) {
+      return res.status(StatusCodes.NOT_FOUND).json("journal not found");
+    }
+
+    return res
+      .status(StatusCodes.OK)
+      .json({ message: "journal deleted", deletedJournal: journal });
+  } catch (error) {
+    return res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: "Error happened", error: error.toString() });
   }
 };
