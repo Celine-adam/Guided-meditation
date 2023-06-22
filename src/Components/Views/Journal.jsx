@@ -33,9 +33,7 @@ export default function Journal() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`/api/journal/delete/${id}`);
-      setJournal((prevFavorite) =>
-        prevFavorite.filter((journal) => journal._id !== id)
-      );
+      setJournal((prevJournal) => prevJournal.filter((x) => x._id !== id));
     } catch (error) {
       console.log("Error deleting journal", error);
     }
@@ -50,15 +48,15 @@ export default function Journal() {
       </form>
       <div className="journal-container">
         <div className="journal-wrapper">
-          {journal.map((journal, index) => (
+          {journal.map((x, index) => (
             <div className="div-journal" key={index}>
               <div className="div-date">
-                <p className="journal-date">{journal.dateCreated}</p>
-                <button onClick={() => handleDelete(journal._id)}>
+                <p className="journal-date">{x.dateCreated}</p>
+                <button onClick={() => handleDelete(x._id)}>
                   <FaTimes className="remove-icon" />
                 </button>
               </div>
-              <p className="journal-content">{journal.content}</p>
+              <p className="journal-content">{x.content}</p>
             </div>
           ))}
         </div>
