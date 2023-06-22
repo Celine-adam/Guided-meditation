@@ -1,41 +1,34 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-const defaultState = {
-  inputVal: "",
-  journal: [],
-  isEmpty: false,
-};
+// const defaultState = {
+//   inputVal: "",
+//   journal: [],
+//   isEmpty: false,
+// };
 export default function Journal() {
-  const [state, setState] = useState(defaultState);
-  function updateValue(e) {
-    setState({ ...state, inputVal: e.target.value });
-  }
-  function addJournal(e) {
-    e.preventDefault();
-    const currentDate = new Date();
-    const options = { month: "long", day: "numeric" };
-    const formattedDate = currentDate.toLocaleString(undefined, options);
-    const temporary = [...state.journal];
+  const [journal, setJournal] = useState([]);
+  useEffect(() => {
+    fetchFavorite();
+  }, []);
 
-    if (!state.inputVal.length) {
-      setState({ ...state, isEmpty: true });
-      return;
+  const fetchJournal = async () => {
+    try {
+      const res = await axios.get(`/api/journal/list`);
+      setJournal(res.data);
+    } catch (error) {
+      console.log("Resource not found");
     }
-
-    temporary.push({
-      date: `${formattedDate}`,
-      content: `${state.inputVal}`,
-      done: false,
-    });
-    setState({ ...state, journal: temporary, inputVal: "" });
-
-    console.log(state.journal);
-  }
-
-  function deleteJournal(index) {
-    const journal = state.journal.filter((x, i) => index !== i);
-    setState({ ...state, journal });
-  }
+  };
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/journal/delete/${id}`);
+      setJournal((prevFavorite) =>
+        prevFavorite.filter((journal) => journal.id !== id)
+      );
+    } catch (error) {
+      console.log("Error deleting journal", error);
+    }
+  };
 
   return (
     <div id="journal-section">
@@ -54,8 +47,8 @@ export default function Journal() {
           {state.journal.map((journal, index) => (
             <div className="div-journal" key={index}>
               <div className="div-date">
-                <p className="journal-date">{journal.date}</p>
-                <button onClick={() => deleteJournal(index)}>
+                <p className="journal-date">{journal.dateCreated}</p>
+                <button onClick={() => handleDelete(journal.id)}>
                   <FaTimes className="remove-icon" />
                 </button>
               </div>
