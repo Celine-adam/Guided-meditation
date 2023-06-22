@@ -10,8 +10,12 @@ export default function Journal() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const currentDate = new Date();
+    const options = { month: "long", day: "numeric" };
+    const formattedDate = currentDate.toLocaleString(undefined, options);
     const formData = new FormData(event.target);
     const data = {
+      dateCreated: formData.get(formattedDate),
       content: formData.get("content"),
     };
     try {
