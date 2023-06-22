@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
-// const defaultState = {
-//   inputVal: "",
-//   journal: [],
-//   isEmpty: false,
-// };
+import axios from "../../Util/axiosInstance.js";
+
 export default function Journal() {
   const [journal, setJournal] = useState([]);
   useEffect(() => {
-    fetchFavorite();
+    fetchJournal();
   }, []);
 
   const fetchJournal = async () => {
@@ -33,18 +30,13 @@ export default function Journal() {
   return (
     <div id="journal-section">
       <h1>Dear Diary</h1>
-      <form onSubmit={addJournal} className="journal-form">
-        <textarea
-          type="text"
-          onChange={updateValue}
-          value={state.inputVal}
-          placeholder="How was yor day ?"
-        />
+      <form className="journal-form">
+        <textarea type="text" placeholder="How was yor day ?" />
         <button>Entry</button>
       </form>
       <div className="journal-container">
         <div className="journal-wrapper">
-          {state.journal.map((journal, index) => (
+          {journal.map((journal, index) => (
             <div className="div-journal" key={index}>
               <div className="div-date">
                 <p className="journal-date">{journal.dateCreated}</p>

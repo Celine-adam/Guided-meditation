@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
+import axios from "../../Util/axiosInstance.js";
 
 export default function Favorite() {
   const { favorite, setFavorite } = useState([]);
+
   useEffect(() => {
     fetchFavorite();
   }, []);
