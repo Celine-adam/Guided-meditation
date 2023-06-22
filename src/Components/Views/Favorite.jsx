@@ -21,7 +21,7 @@ export default function Favorite() {
     try {
       await axios.delete(`/api/favorite/delete/${id}`);
       setFavorite((prevFavorite) =>
-        prevFavorite.filter((fav) => fav.id !== id)
+        prevFavorite.filter((fav) => fav._id !== id)
       );
     } catch (error) {
       console.log("Error deleting favorite", error);

@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import { DateContext } from "../../Context/DateContext.js";
+import React, { useState, useEffect } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import axios from "../../Util/axiosInstance";
 import heroImage from "../../img/vecteezy_vector-illustration-of-a-girl-in-a-yoga-pose-without-a-face_11426491.jpg";

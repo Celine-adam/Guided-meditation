@@ -8,6 +8,20 @@ export default function Journal() {
     fetchJournal();
   }, []);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = {
+      content: formData.get("content"),
+    };
+    try {
+      const res = await axios.post("/api/journal/create", data);
+      console.log(res.data);
+    } catch (error) {
+      console.error("there was an error", error);
+    }
+  };
+
   const fetchJournal = async () => {
     try {
       const res = await axios.get(`/api/journal/list`);
@@ -20,7 +34,7 @@ export default function Journal() {
     try {
       await axios.delete(`/api/journal/delete/${id}`);
       setJournal((prevFavorite) =>
-        prevFavorite.filter((journal) => journal.id !== id)
+        prevFavorite.filter((journal) => journal._id !== id)
       );
     } catch (error) {
       console.log("Error deleting journal", error);
@@ -30,8 +44,8 @@ export default function Journal() {
   return (
     <div id="journal-section">
       <h1>Dear Diary</h1>
-      <form className="journal-form">
-        <textarea type="text" placeholder="How was yor day ?" />
+      <form className="journal-form" onSubmit={handleSubmit}>
+        <textarea type="text" placeholder="How was yor day ?" name="content" />
         <button>Entry</button>
       </form>
       <div className="journal-container">
@@ -40,7 +54,7 @@ export default function Journal() {
             <div className="div-journal" key={index}>
               <div className="div-date">
                 <p className="journal-date">{journal.dateCreated}</p>
-                <button onClick={() => handleDelete(journal.id)}>
+                <button onClick={() => handleDelete(journal._id)}>
                   <FaTimes className="remove-icon" />
                 </button>
               </div>
