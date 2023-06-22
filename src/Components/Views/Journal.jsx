@@ -10,12 +10,9 @@ export default function Journal() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const currentDate = new Date();
-    const options = { month: "long", day: "numeric" };
-    const formattedDate = currentDate.toLocaleString(undefined, options);
+
     const formData = new FormData(event.target);
     const data = {
-      dateCreated: formData.get(formattedDate),
       content: formData.get("content"),
     };
     try {
@@ -24,6 +21,7 @@ export default function Journal() {
     } catch (error) {
       console.error("there was an error", error);
     }
+    fetchJournal();
   };
 
   const fetchJournal = async () => {
