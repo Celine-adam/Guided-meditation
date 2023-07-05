@@ -45,7 +45,7 @@ export default function Journal() {
     <div id="journal-section">
       <h1>Dear Diary</h1>
       <form className="journal-form" onSubmit={handleSubmit}>
-        <textarea type="text" placeholder="How was yor day ?" name="content" />
+        <textarea type="text" placeholder="How was your day ?" name="content" />
         <button>Entry</button>
       </form>
       <div className="journal-container">
